@@ -21,8 +21,8 @@ export interface ServiceDetail {
   description: string;
   long_description: string;
   image: string;
-  icon: any; // We'll just pass lucide icons
-  features: { title: string; description: string; icon: any }[];
+  icon: LucideIcon;
+  features: { title: string; description: string; icon: LucideIcon }[];
   benefits: { title: string; description: string }[];
   use_cases: { title: string; description: string }[];
   technical_specs: { label: string; value: string }[];

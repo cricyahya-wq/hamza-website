@@ -13,11 +13,12 @@ import { ContactForm } from "@/components/ui/ContactForm";
 import { getServiceBySlug, servicesData } from "@/data/services";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = getServiceBySlug(params.slug);
+  const resolvedParams = await params;
+  const service = getServiceBySlug(resolvedParams.slug);
 
   if (!service) {
     return {
@@ -43,8 +44,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ServicePage({ params }: Props) {
-  const service = getServiceBySlug(params.slug);
+export default async function ServicePage({ params }: Props) {
+  const resolvedParams = await params;
+  const service = getServiceBySlug(resolvedParams.slug);
 
   if (!service) {
     notFound();

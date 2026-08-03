@@ -22,7 +22,7 @@ export function SolutionsSuccess() {
             <Quote className="h-12 w-12 text-accent-400 opacity-50" />
             <blockquote className="mt-8">
               <p className="font-display text-2xl font-medium leading-relaxed text-neutral-900 sm:text-3xl">
-                "{success.quote}"
+                &quot;{success.quote}&quot;
               </p>
             </blockquote>
             <div className="mt-10 flex items-center gap-5">
