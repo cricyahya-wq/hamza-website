@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MoosePBX Website
+
+Advanced call center solutions designed to cut operational costs, maximize efficiency, and drive business growth.
+
+## Tech Stack
+
+- [Next.js 15](https://nextjs.org) (App Router)
+- React 19 + TypeScript
+- Tailwind CSS v4
+- Framer Motion + GSAP
+- Lenis (smooth scroll)
+- Three.js + React Three Fiber
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run start` — serve the production build
+- `npm run lint` — run ESLint
+- `npm run typecheck` — run the TypeScript compiler with no emit
+- `npm run format` / `npm run format:check` — Prettier write/check
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/            App Router routes, layout, and global styles
+  components/
+    ui/           Reusable primitives (Button, Container, Section, FadeIn)
+    providers/    App-wide providers (smooth scroll, motion)
+    three/        React Three Fiber scene primitives
+  config/         Site configuration (name, tagline, contact info)
+  hooks/          Shared React hooks
+  lib/            Utilities (cn, fonts, gsap setup)
+  types/          Shared TypeScript types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the production domain before deploying (used for SEO metadata). Set `NEXT_PUBLIC_API_URL` to point at the backend API (see below).
 
-## Deploy on Vercel
+## Backend API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The contact form and newsletter signup are served by a separate Node.js/Express/PostgreSQL API in [`server/`](./server) — it's its own package with its own dependencies and `.env`. See [`server/README.md`](./server/README.md) for setup, and run it alongside this app in development:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+cd server
+npm install
+cp .env.example .env   # fill in DB + SMTP credentials
+npm run migrate
+npm run dev             # http://localhost:4000
+```
