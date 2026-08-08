@@ -3,7 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2, Facebook, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { subscribeNewsletter, ApiError } from "@/lib/api";
@@ -166,12 +166,69 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-8 sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-800 pt-8 sm:flex-row">
           <p className="text-sm text-white/50">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
-          <p className="text-sm text-white/50">{siteConfig.tagline}</p>
+          
+          <div className="flex items-center gap-2">
+            {siteConfig.links?.facebook && (
+              <a
+                href={siteConfig.links.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                aria-label="Facebook"
+              >
+                <Facebook className="size-5" />
+              </a>
+            )}
+            {siteConfig.links?.linkedin && (
+              <a
+                href={siteConfig.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="size-5" />
+              </a>
+            )}
+            {siteConfig.links?.instagram && (
+              <a
+                href={siteConfig.links.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="size-5" />
+              </a>
+            )}
+            {siteConfig.links?.twitter && (
+              <a
+                href={siteConfig.links.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                aria-label="X (Twitter)"
+              >
+                <Twitter className="size-5" />
+              </a>
+            )}
+            {siteConfig.links?.youtube && (
+              <a
+                href={siteConfig.links.youtube}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                aria-label="YouTube"
+              >
+                <Youtube className="size-5" />
+              </a>
+            )}
+          </div>
         </div>
       </Container>
     </footer>

@@ -11,6 +11,8 @@ export interface SiteConfig {
     twitter?: string;
     linkedin?: string;
     facebook?: string;
+    instagram?: string;
+    youtube?: string;
   };
 }
 

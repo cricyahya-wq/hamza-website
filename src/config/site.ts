@@ -10,5 +10,11 @@ export const siteConfig: SiteConfig = {
   // Set NEXT_PUBLIC_SITE_URL in your production environment before deploying.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "info.moosepbx@gmail.com",
-  links: {},
+  links: {
+    linkedin: "https://www.linkedin.com/company/moosepbx/posts/?feedView=all",
+    facebook: "#",
+    instagram: "#",
+    twitter: "#",
+    youtube: "#",
+  },
 };
