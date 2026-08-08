@@ -172,61 +172,53 @@ export function Footer() {
             reserved.
           </p>
           
+          <p className="text-sm text-white/50 text-center sm:text-left">
+            {siteConfig.tagline}
+          </p>
+
           <div className="flex items-center gap-2">
             {siteConfig.links?.facebook && (
-              <a
-                href={siteConfig.links.facebook}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+              <div
+                className="p-2 rounded-md border border-transparent text-white/40"
                 aria-label="Facebook"
               >
                 <Facebook className="size-5" />
-              </a>
+              </div>
             )}
             {siteConfig.links?.linkedin && (
               <a
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="size-5" />
               </a>
             )}
             {siteConfig.links?.instagram && (
-              <a
-                href={siteConfig.links.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+              <div
+                className="p-2 rounded-md border border-transparent text-white/40"
                 aria-label="Instagram"
               >
                 <Instagram className="size-5" />
-              </a>
+              </div>
             )}
             {siteConfig.links?.twitter && (
-              <a
-                href={siteConfig.links.twitter}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+              <div
+                className="p-2 rounded-md border border-transparent text-white/40"
                 aria-label="X (Twitter)"
               >
                 <Twitter className="size-5" />
-              </a>
+              </div>
             )}
             {siteConfig.links?.youtube && (
-              <a
-                href={siteConfig.links.youtube}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all"
+              <div
+                className="p-2 rounded-md border border-transparent text-white/40"
                 aria-label="YouTube"
               >
                 <Youtube className="size-5" />
-              </a>
+              </div>
             )}
           </div>
         </div>
