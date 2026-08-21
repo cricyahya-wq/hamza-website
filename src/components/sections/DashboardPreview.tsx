@@ -76,7 +76,7 @@ export function DashboardPreview() {
         />
 
         <FadeIn delay={0.3} className="mt-12 flex justify-center">
-          <div className="bg-white inline-flex flex-wrap justify-center gap-1 rounded-full p-1">
+          <div className="bg-card inline-flex flex-wrap justify-center gap-1 rounded-full p-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -95,7 +95,7 @@ export function DashboardPreview() {
                 <span
                   className={cn(
                     "relative z-10 flex items-center gap-2",
-                    active === tab.id ? "text-primary-950" : "text-neutral-600",
+                    active === tab.id ? "text-primary-950" : "text-neutral-400",
                   )}
                 >
                   <tab.icon className="size-4" />
@@ -107,12 +107,12 @@ export function DashboardPreview() {
         </FadeIn>
 
         <FadeIn delay={0.4} className="mt-10">
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-[0_20px_45px_rgba(2,6,23,0.08)]">
-            <div className="flex items-center gap-2 border-b border-neutral-200 px-5 py-4 bg-neutral-50/50">
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-border bg-card shadow-[0_20px_45px_rgba(2,6,23,0.08)]">
+            <div className="flex items-center gap-2 border-b border-border px-5 py-4 bg-neutral-50/50">
               <span className="size-3 rounded-full bg-red-500/70" />
               <span className="size-3 rounded-full bg-yellow-500/70" />
               <span className="size-3 rounded-full bg-green-500/70" />
-              <span className="ml-4 truncate rounded-md bg-neutral-50 px-3 py-1 text-xs text-neutral-400">
+              <span className="ml-4 truncate rounded-md bg-surface-alt px-3 py-1 text-xs text-neutral-400">
                 app.moosepbx.com/dashboard
               </span>
             </div>
@@ -145,11 +145,11 @@ function QueuePanel() {
       {queueCalls.map((call) => (
         <div
           key={call.caller}
-          className="flex flex-col gap-2 rounded-xl border border-neutral-200 bg-white shadow-sm px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col gap-2 rounded-xl border border-border bg-card shadow-sm px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <div className="flex items-center gap-3">
             <PhoneCall className="text-accent-400 size-4" />
-            <span className="font-mono text-sm text-neutral-900">{call.caller}</span>
+            <span className="font-mono text-sm text-foreground">{call.caller}</span>
           </div>
           <div className="flex items-center gap-4 text-sm text-neutral-400">
             <span>{call.agent}</span>
@@ -181,10 +181,10 @@ function AgentsPanel() {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-neutral-900">{agent.name}</span>
+              <span className="text-foreground">{agent.name}</span>
               <span className="text-neutral-400">{agent.score}%</span>
             </div>
-            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-neutral-100">
+            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-alt">
               <div
                 className="bg-primary-500 h-full rounded-full"
                 style={{ width: `${agent.score}%` }}
@@ -204,14 +204,14 @@ function AnalyticsPanel() {
         {analyticsTiles.map((tile) => (
           <div
             key={tile.label}
-            className="rounded-xl border border-neutral-200 bg-white shadow-sm px-5 py-4"
+            className="rounded-xl border border-border bg-card shadow-sm px-5 py-4"
           >
-            <p className="text-2xl font-semibold text-neutral-900">{tile.value}</p>
+            <p className="text-2xl font-semibold text-foreground">{tile.value}</p>
             <p className="mt-1 text-sm text-neutral-400">{tile.label}</p>
           </div>
         ))}
       </div>
-      <div className="mt-6 rounded-xl border border-neutral-200 bg-white shadow-sm p-5">
+      <div className="mt-6 rounded-xl border border-border bg-card shadow-sm p-5">
         <svg
           viewBox="0 0 400 120"
           className="h-28 w-full"

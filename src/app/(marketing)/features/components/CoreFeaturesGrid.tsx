@@ -17,7 +17,7 @@ export function CoreFeaturesGrid() {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className={cn(
                 "group relative flex h-full flex-col overflow-hidden rounded-3xl",
-                "bg-white border border-neutral-200 p-6",
+                "bg-card border border-border p-6",
                 "hover:border-accent-400/40 hover:shadow-2xl hover:shadow-accent-400/5",
                 "transition-all duration-300"
               )}
@@ -25,11 +25,11 @@ export function CoreFeaturesGrid() {
               {/* Soft glow background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-400/0 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:from-accent-400/5 group-hover:opacity-100" />
               
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-white border border-neutral-200 transition-colors group-hover:border-accent-400/30 group-hover:bg-accent-400/10">
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-card border border-border transition-colors group-hover:border-accent-400/30 group-hover:bg-accent-400/10">
                 <Icon className="h-6 w-6 text-neutral-400 transition-colors group-hover:text-accent-400" />
               </div>
               
-              <h3 className="font-display relative z-10 mt-6 text-lg font-bold text-neutral-900 group-hover:text-accent-100 transition-colors">
+              <h3 className="font-display relative z-10 mt-6 text-lg font-bold text-foreground group-hover:text-accent-100 transition-colors">
                 {feature.title}
               </h3>
               

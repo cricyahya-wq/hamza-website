@@ -35,7 +35,7 @@ export function TrustedCompanies() {
   const loopedCompanies = [...trustedCompanies, ...trustedCompanies];
 
   return (
-    <section className="bg-card/40 border-y border-neutral-200 py-12">
+    <section className="bg-background/40 border-y border-border py-12">
       <Container>
         <p className="text-center text-sm font-medium tracking-wide text-neutral-400 uppercase">
           Built for teams like these

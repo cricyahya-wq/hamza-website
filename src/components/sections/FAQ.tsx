@@ -7,7 +7,7 @@ import { faqs } from "@/data/faq";
 
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-white">
+    <Section id="faq" className="bg-background">
       <Container className="max-w-3xl">
         <SectionHeading
           eyebrow="FAQ"
@@ -17,7 +17,7 @@ export function FAQ() {
 
         <FadeIn
           delay={0.3}
-          className="bg-white mt-12 rounded-3xl border border-neutral-200 p-6 shadow-sm sm:p-10"
+          className="bg-card mt-12 rounded-3xl border border-border p-6 shadow-sm sm:p-10"
         >
           <Accordion items={faqs} />
         </FadeIn>

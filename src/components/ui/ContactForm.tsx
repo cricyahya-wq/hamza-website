@@ -52,8 +52,8 @@ export function ContactForm() {
           className="flex flex-col items-center justify-center py-12 text-center"
         >
           <CheckCircle2 className="text-accent-400 size-12" />
-          <p className="mt-4 text-lg font-semibold text-neutral-900">Message sent</p>
-          <p className="mt-2 text-neutral-600">
+          <p className="mt-4 text-lg font-semibold text-foreground">Message sent</p>
+          <p className="mt-2 text-neutral-400">
             Thanks for reaching out — our team will be in touch shortly.
           </p>
         </m.div>

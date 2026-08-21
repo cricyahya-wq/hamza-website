@@ -99,16 +99,16 @@ export default function AboutPage() {
             <span className="text-accent-400 text-sm font-semibold tracking-wide uppercase">
               Our story
             </span>
-            <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Legacy phone systems weren&apos;t built for how teams work today
             </h2>
-            <p className="mt-6 leading-relaxed text-neutral-600">
+            <p className="mt-6 leading-relaxed text-neutral-400">
               We started MoosePBX after watching support and sales teams get
               buried in hardware contracts, six-month implementations, and phone
               systems that couldn&apos;t tell them anything about what was
               actually happening on their calls.
             </p>
-            <p className="mt-4 leading-relaxed text-neutral-600">
+            <p className="mt-4 leading-relaxed text-neutral-400">
               Today, MoosePBX gives teams of every size a call center platform
               that&apos;s live in weeks, gets more reliable every year, and
               tells you exactly where to focus next.
@@ -116,8 +116,8 @@ export default function AboutPage() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="bg-white rounded-3xl border border-neutral-200 p-10">
-              <p className="font-display text-2xl leading-snug font-semibold text-neutral-900">
+            <div className="bg-card rounded-3xl border border-border p-10">
+              <p className="font-display text-2xl leading-snug font-semibold text-foreground">
                 &ldquo;{siteConfig.mission}&rdquo;
               </p>
               <p className="mt-6 text-sm text-neutral-400">
@@ -128,7 +128,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="bg-card/30">
+      <Section className="bg-background/30">
         <Container>
           <SectionHeading
             eyebrow="Values"
@@ -159,7 +159,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="bg-card/30">
+      <Section className="bg-background/30">
         <Container>
           <SectionHeading
             eyebrow="Leadership"
@@ -168,11 +168,11 @@ export default function AboutPage() {
           <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {leadership.map((person, index) => (
               <FadeIn key={person.name} delay={index * 0.08}>
-                <div className="bg-white rounded-2xl border border-neutral-200 p-6 text-center">
-                  <div className="from-primary-500 to-accent-400 mx-auto flex size-16 items-center justify-center rounded-full bg-gradient-to-br text-lg font-semibold text-neutral-900">
+                <div className="bg-card rounded-2xl border border-border p-6 text-center">
+                  <div className="from-primary-500 to-accent-400 mx-auto flex size-16 items-center justify-center rounded-full bg-gradient-to-br text-lg font-semibold text-foreground">
                     {person.initials}
                   </div>
-                  <p className="font-display mt-4 font-semibold text-neutral-900">
+                  <p className="font-display mt-4 font-semibold text-foreground">
                     {person.name}
                   </p>
                   <p className="mt-1 text-sm text-neutral-400">

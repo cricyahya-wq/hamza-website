@@ -48,7 +48,7 @@ export default function ContactPage() {
             {infoCards.map((card) => (
               <div
                 key={card.label}
-                className="flex items-center gap-4 rounded-2xl border border-neutral-200 p-4"
+                className="flex items-center gap-4 rounded-2xl border border-border p-4"
               >
                 <div className="bg-accent-400/10 text-accent-400 flex size-11 shrink-0 items-center justify-center rounded-full">
                   <card.icon className="size-5" />
@@ -58,12 +58,12 @@ export default function ContactPage() {
                   {card.href ? (
                     <a
                       href={card.href}
-                      className="hover:text-accent-300 font-medium text-neutral-900"
+                      className="hover:text-accent-300 font-medium text-foreground"
                     >
                       {card.value}
                     </a>
                   ) : (
-                    <p className="font-medium text-neutral-900">{card.value}</p>
+                    <p className="font-medium text-foreground">{card.value}</p>
                   )}
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="bg-white rounded-3xl border border-neutral-200 p-6 sm:p-10">
+            <div className="bg-card rounded-3xl border border-border p-6 sm:p-10">
               <ContactForm />
             </div>
           </FadeIn>

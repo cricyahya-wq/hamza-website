@@ -48,7 +48,12 @@ export function CtaBanner({
               </Button>
             </MagneticButton>
             {secondaryLabel && secondaryHref && (
-              <Button href={secondaryHref} variant="outline" size="lg">
+              <Button
+                href={secondaryHref}
+                variant="outline"
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50"
+              >
                 {secondaryLabel}
               </Button>
             )}

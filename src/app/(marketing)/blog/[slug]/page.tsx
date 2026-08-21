@@ -68,11 +68,11 @@ function RenderSection({ section, idx }: { section: BlogSection; idx: number }) 
 
   if (section.type === "tip") {
     return (
-      <div className="bg-primary-900/40 my-8 rounded-2xl border border-neutral-200 px-6 py-5">
+      <div className="bg-primary-900/40 my-8 rounded-2xl border border-border px-6 py-5">
         <p className="mb-1 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
           💡 Tip
         </p>
-        <p className="text-sm leading-relaxed text-neutral-600">{section.body}</p>
+        <p className="text-sm leading-relaxed text-neutral-400">{section.body}</p>
       </div>
     );
   }
@@ -80,7 +80,7 @@ function RenderSection({ section, idx }: { section: BlogSection; idx: number }) 
   if (section.type === "quote") {
     return (
       <blockquote className="border-accent-400 my-8 border-l-4 pl-6">
-        <p className="text-lg leading-relaxed font-medium text-neutral-900 italic">
+        <p className="text-lg leading-relaxed font-medium text-foreground italic">
           &ldquo;{section.body}&rdquo;
         </p>
         {section.cite && (
@@ -95,11 +95,11 @@ function RenderSection({ section, idx }: { section: BlogSection; idx: number }) 
   return (
     <div key={idx} className="mt-8">
       {section.heading && (
-        <h2 className="font-display mb-4 text-xl font-bold text-neutral-900 sm:text-2xl">
+        <h2 className="font-display mb-4 text-xl font-bold text-foreground sm:text-2xl">
           {section.heading}
         </h2>
       )}
-      <p className={`leading-relaxed text-neutral-600 ${idx === 0 ? "text-lg text-neutral-200" : ""}`}>
+      <p className={`leading-relaxed text-neutral-400 ${idx === 0 ? "text-lg text-neutral-200" : ""}`}>
         {section.body}
       </p>
     </div>
@@ -181,13 +181,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </FadeIn>
 
               <FadeIn delay={0.1}>
-                <h1 className="font-display mt-5 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
+                <h1 className="font-display mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                   {post.title}
                 </h1>
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <div className="mt-5 flex flex-wrap items-center gap-5 border-b border-neutral-200 pb-8 text-sm text-neutral-400">
+                <div className="mt-5 flex flex-wrap items-center gap-5 border-b border-border pb-8 text-sm text-neutral-400">
                   <span className="flex items-center gap-1.5">
                     <User className="size-4" />
                     <span>
@@ -219,7 +219,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               {/* Share */}
               <FadeIn delay={0.25}>
-                <div className="mt-14 flex flex-wrap items-center gap-3 border-t border-neutral-200 pt-8">
+                <div className="mt-14 flex flex-wrap items-center gap-3 border-t border-border pt-8">
                   <span className="flex items-center gap-1.5 text-sm text-neutral-400">
                     <Share2 className="size-4" />
                     Share this article
@@ -229,7 +229,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Share on X / Twitter"
-                    className="bg-white hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-xs text-neutral-600 transition-colors hover:text-primary-600"
+                    className="bg-card hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-neutral-400 transition-colors hover:text-primary-600"
                   >
                     {/* X (Twitter) icon */}
                     <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -242,7 +242,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Share on LinkedIn"
-                    className="bg-white hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-xs text-neutral-600 transition-colors hover:text-primary-600"
+                    className="bg-card hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-neutral-400 transition-colors hover:text-primary-600"
                   >
                     {/* LinkedIn icon */}
                     <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <button
                     type="button"
                     aria-label="Copy link"
-                    className="bg-white hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-xs text-neutral-600 transition-colors hover:text-primary-600"
+                    className="bg-card hover:border-accent-400/40 flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-neutral-400 transition-colors hover:text-primary-600"
                   >
                     <Link2 className="size-3.5" />
                     Copy link
@@ -264,16 +264,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Prev / Next navigation */}
               {(prev ?? next) && (
                 <FadeIn delay={0.3}>
-                  <div className="mt-12 grid grid-cols-1 gap-4 border-t border-neutral-200 pt-10 sm:grid-cols-2">
+                  <div className="mt-12 grid grid-cols-1 gap-4 border-t border-border pt-10 sm:grid-cols-2">
                     {prev && (
                       <Link
                         href={`/blog/${prev.slug}`}
-                        className="bg-white hover:border-accent-400/30 group flex items-start gap-3 rounded-2xl border border-neutral-200 p-5 transition-colors"
+                        className="bg-card hover:border-accent-400/30 group flex items-start gap-3 rounded-2xl border border-border p-5 transition-colors"
                       >
                         <ArrowLeft className="mt-0.5 size-4 shrink-0 text-neutral-400 transition-transform group-hover:-translate-x-1" />
                         <div className="min-w-0">
                           <p className="text-xs text-neutral-400">Previous</p>
-                          <p className="group-hover:text-accent-300 mt-1 truncate text-sm font-medium text-neutral-900 transition-colors">
+                          <p className="group-hover:text-accent-300 mt-1 truncate text-sm font-medium text-foreground transition-colors">
                             {prev.title}
                           </p>
                         </div>
@@ -282,12 +282,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {next && (
                       <Link
                         href={`/blog/${next.slug}`}
-                        className="bg-white hover:border-accent-400/30 group flex items-start gap-3 rounded-2xl border border-neutral-200 p-5 text-right transition-colors sm:flex-row-reverse"
+                        className="bg-card hover:border-accent-400/30 group flex items-start gap-3 rounded-2xl border border-border p-5 text-right transition-colors sm:flex-row-reverse"
                       >
                         <ArrowRight className="mt-0.5 size-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-1" />
                         <div className="min-w-0">
                           <p className="text-xs text-neutral-400">Next</p>
-                          <p className="group-hover:text-accent-300 mt-1 truncate text-sm font-medium text-neutral-900 transition-colors">
+                          <p className="group-hover:text-accent-300 mt-1 truncate text-sm font-medium text-foreground transition-colors">
                             {next.title}
                           </p>
                         </div>
@@ -312,7 +312,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 {/* Table of contents */}
                 {post.tableOfContents && post.tableOfContents.length > 0 && (
-                  <div className="bg-white rounded-2xl border border-neutral-200 p-5">
+                  <div className="bg-card rounded-2xl border border-border p-5">
                     <p className="mb-4 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
                       Table of contents
                     </p>
@@ -320,7 +320,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {post.tableOfContents.map((heading, i) => (
                         <li key={i}>
                           <span className="hover:text-accent-300 flex gap-2.5 text-sm text-neutral-400 transition-colors cursor-default">
-                            <span className="text-neutral-700 tabular-nums">
+                            <span className="text-neutral-400 tabular-nums">
                               {String(i + 1).padStart(2, "0")}.
                             </span>
                             {heading}
@@ -332,8 +332,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 )}
 
                 {/* CTA box */}
-                <div className="from-accent-950/60 bg-white rounded-2xl border border-neutral-200 bg-gradient-to-br to-transparent p-5">
-                  <p className="font-display text-sm font-bold text-neutral-900">
+                <div className="from-accent-950/60 bg-card rounded-2xl border border-border bg-gradient-to-br to-transparent p-5">
+                  <p className="font-display text-sm font-bold text-foreground">
                     Ready to modernize your phone system?
                   </p>
                   <p className="mt-2 text-xs leading-relaxed text-neutral-400">
@@ -354,10 +354,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* ── Related articles ─────────────────────────────────────────────── */}
       {related.length > 0 && (
-        <Section className="bg-surface-alt border-t border-neutral-200">
+        <Section className="bg-surface-alt border-t border-border">
           <Container>
             <FadeIn>
-              <h2 className="font-display mb-10 text-2xl font-bold text-neutral-900">
+              <h2 className="font-display mb-10 text-2xl font-bold text-foreground">
                 Related articles
               </h2>
             </FadeIn>

@@ -18,21 +18,19 @@ interface BlogCardProps {
   className?: string;
 }
 
-// Gradient fallbacks per category
 const categoryGradients: Record<string, string> = {
   VoIP: "from-accent-900/80 via-primary-800/60 to-primary-950",
   PBX: "from-secondary-900/80 via-primary-800/60 to-primary-950",
   "Call Center": "from-primary-800/80 via-secondary-900/60 to-primary-950",
   Security: "from-primary-900/80 via-secondary-800/60 to-primary-950",
   AI: "from-accent-950/80 via-accent-900/50 to-primary-950",
-  "Business Communication":
-    "from-secondary-800/80 via-primary-900/60 to-primary-950",
+  "Business Communication": "from-secondary-800/80 via-primary-900/60 to-primary-950",
   "Company News": "from-primary-800/80 via-accent-950/50 to-primary-950",
 };
 
 function CategoryBadge({ category }: { category: string }) {
   return (
-    <span className="bg-accent-400/10 text-primary-600 border-accent-400/20 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase">
+    <span className="bg-accent-500/10 text-accent-400 border-accent-500/20 inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-bold tracking-widest uppercase shadow-sm">
       {category}
     </span>
   );
@@ -50,9 +48,7 @@ export function BlogCard({
   featured = false,
   className,
 }: BlogCardProps) {
-  const gradient =
-    categoryGradients[category] ??
-    "from-primary-800/80 via-secondary-800/60 to-primary-950";
+  const gradient = categoryGradients[category] ?? "from-primary-800/80 via-secondary-800/60 to-primary-950";
 
   if (featured) {
     return (
@@ -60,50 +56,54 @@ export function BlogCard({
         <m.div
           whileHover={{ y: -4 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="bg-white border-neutral-200 hover:border-accent-400/30 relative grid overflow-hidden rounded-3xl border transition-colors duration-300 lg:grid-cols-5"
+          className="bg-surface-alt border-border hover:border-[#315FE8]/40 hover:shadow-2xl hover:shadow-[#315FE8]/10 relative grid overflow-hidden rounded-3xl border transition-all duration-300 lg:grid-cols-5"
         >
           {/* Image panel */}
           <div
             className={cn(
               "relative overflow-hidden lg:col-span-3",
-              "aspect-[16/9] lg:aspect-auto",
+              "aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto",
             )}
           >
             {image ? (
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: `url(${image})` }}
                 aria-hidden
               />
             ) : (
               <div
-                className={cn(
-                  "absolute inset-0 bg-gradient-to-br",
-                  gradient,
-                )}
+                className={cn("absolute inset-0 bg-gradient-to-br", gradient)}
                 aria-hidden
               />
             )}
-            <div className="from-primary-950/60 absolute inset-0 bg-gradient-to-r to-transparent" />
+            <div className="from-background absolute inset-0 bg-gradient-to-r via-background/40 to-transparent lg:via-background/20" />
+            <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent lg:hidden" />
+            
             {/* Featured label */}
-            <span className="absolute top-5 left-5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-neutral-900 backdrop-blur-sm">
-              Featured
-            </span>
+            <div className="absolute top-6 left-6 flex items-center gap-2 rounded-full bg-background/80 px-3.5 py-1.5 backdrop-blur-md border border-border">
+              <span className="size-2 rounded-full bg-accent-500 animate-pulse" />
+              <span className="text-[10px] font-bold tracking-widest text-foreground uppercase">
+                Featured
+              </span>
+            </div>
           </div>
 
           {/* Content panel */}
-          <div className="flex flex-col justify-center p-8 lg:col-span-2">
-            <CategoryBadge category={category} />
-            <h2 className="font-display group-hover:text-accent-300 mt-4 text-2xl font-bold tracking-tight text-neutral-900 transition-colors duration-200 lg:text-3xl">
+          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12 lg:col-span-2 relative z-10 bg-background/40 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+            <div>
+              <CategoryBadge category={category} />
+            </div>
+            <h2 className="font-display group-hover:text-accent-400 mt-5 text-2xl font-bold tracking-tight text-foreground transition-colors duration-300 sm:text-3xl lg:text-4xl leading-tight">
               {title}
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-400 line-clamp-3">
               {excerpt}
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-neutral-400">
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-neutral-500">
               {author && (
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 text-neutral-300">
                   <User className="size-3.5" />
                   {author}
                 </span>
@@ -120,9 +120,11 @@ export function BlogCard({
               )}
             </div>
 
-            <div className="text-accent-400 group-hover:text-accent-300 mt-6 flex items-center gap-2 text-sm font-semibold transition-colors">
-              Read article
-              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+            <div className="mt-8 flex items-center">
+              <div className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-accent-500/10 px-6 py-3 text-sm font-bold text-accent-400 transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white border border-accent-500/20 group-hover:border-accent-500 shadow-lg shadow-transparent group-hover:shadow-accent-500/25">
+                Read Article
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </div>
             </div>
           </div>
         </m.div>
@@ -136,13 +138,13 @@ export function BlogCard({
       <m.div
         whileHover={{ y: -6 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="bg-white border-neutral-200 hover:border-accent-400/30 hover:shadow-accent-400/5 flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-300 hover:shadow-xl"
+        className="bg-surface-alt border-border hover:border-[#315FE8]/40 flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-300 hover:shadow-2xl hover:shadow-[#315FE8]/10"
       >
         {/* Thumbnail */}
         <div className="relative aspect-[16/9] overflow-hidden">
           {image ? (
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: `url(${image})` }}
               aria-hidden
             />
@@ -152,41 +154,39 @@ export function BlogCard({
               aria-hidden
             />
           )}
-          <div className="from-primary-950/30 absolute inset-0 bg-gradient-to-t to-transparent" />
+          <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-80" />
         </div>
 
         {/* Body */}
-        <div className="flex flex-1 flex-col p-6">
-          <CategoryBadge category={category} />
-          <h3 className="font-display group-hover:text-accent-300 mt-3 text-lg font-semibold leading-snug text-neutral-900 transition-colors duration-200">
+        <div className="flex flex-1 flex-col p-6 sm:p-8">
+          <div>
+            <CategoryBadge category={category} />
+          </div>
+          <h3 className="font-display group-hover:text-accent-400 mt-4 text-xl font-bold leading-tight text-foreground transition-colors duration-300">
             {title}
           </h3>
-          <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-400">
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400 line-clamp-3">
             {excerpt}
           </p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-neutral-400">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-neutral-500">
             {author && (
-              <span className="flex items-center gap-1">
-                <User className="size-3" />
+              <span className="flex items-center gap-1.5">
+                <User className="size-3.5" />
                 {author}
               </span>
             )}
-            <span className="flex items-center gap-1">
-              <Calendar className="size-3" />
+            <span className="flex items-center gap-1.5">
+              <Calendar className="size-3.5" />
               {date}
             </span>
-            {readTime && (
-              <span className="flex items-center gap-1">
-                <Clock className="size-3" />
-                {readTime}
-              </span>
-            )}
           </div>
 
-          <div className="text-accent-400 group-hover:text-accent-300 mt-4 flex items-center gap-1.5 text-xs font-semibold transition-colors">
-            Read more
-            <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          <div className="mt-6 flex items-center">
+            <div className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-background px-5 py-2.5 text-xs font-bold text-foreground border border-border transition-all duration-300 group-hover:bg-[#315FE8] group-hover:border-[#315FE8] group-hover:text-white shadow-sm">
+              Read More
+              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </div>
           </div>
         </div>
       </m.div>

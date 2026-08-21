@@ -14,7 +14,7 @@ export function Statistics() {
               delay={index * 0.1}
               className="text-center"
             >
-              <p className="font-display text-4xl font-bold text-neutral-900 sm:text-5xl">
+              <p className="font-display text-4xl font-bold text-foreground sm:text-5xl">
                 <AnimatedCounter
                   value={stat.value}
                   prefix={stat.prefix}

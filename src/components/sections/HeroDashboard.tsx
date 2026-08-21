@@ -20,11 +20,11 @@ function FloatingChip({
   return (
     <m.div
       className={cn(
-        "absolute hidden items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/30 backdrop-blur-md lg:flex",
+        "absolute hidden items-center justify-center rounded-2xl border border-white/10 bg-foreground/5 shadow-lg shadow-black/30 backdrop-blur-md lg:flex",
         "size-12 text-accent-300",
         className,
       )}
-      animate={{ y: [0, -12, 0] }}
+      animate={{ y: [0, -3, 0] }}
       transition={{
         duration,
         repeat: Infinity,

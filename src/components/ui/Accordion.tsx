@@ -22,12 +22,12 @@ export function Accordion({ items }: { items: FaqItem[] }) {
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 py-4 text-left"
             >
-              <span className="text-base font-medium text-neutral-900 sm:text-lg">
+              <span className="text-base font-medium text-foreground sm:text-lg">
                 {item.question}
               </span>
               <span
                 className={cn(
-                  "flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-800 text-neutral-600 transition-transform duration-300",
+                  "flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-transform duration-300",
                   isOpen && "bg-accent-400 text-primary-950 rotate-45",
                 )}
               >
@@ -43,7 +43,7 @@ export function Accordion({ items }: { items: FaqItem[] }) {
                   transition={{ duration: 0.35, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="pr-12 pb-4 leading-relaxed text-neutral-600">
+                  <p className="pr-12 pb-4 leading-relaxed text-neutral-400">
                     {item.answer}
                   </p>
                 </m.div>

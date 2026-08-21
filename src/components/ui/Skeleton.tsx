@@ -37,7 +37,7 @@ export function SkeletonAvatar({ className }: { className?: string }) {
 
 export function SkeletonCard() {
   return (
-    <div className="bg-white space-y-4 rounded-3xl border border-neutral-200 p-6">
+    <div className="bg-card space-y-4 rounded-3xl border border-border p-6">
       <Skeleton className="size-11 rounded-xl" />
       <Skeleton className="h-5 w-1/2" />
       <SkeletonText lines={2} />

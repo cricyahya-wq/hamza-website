@@ -85,7 +85,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
               placeholder="Search articles…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-white focus:border-accent-400 focus:ring-accent-400/20 w-full rounded-full border border-neutral-200 py-2.5 pr-4 pl-11 text-sm text-neutral-900 placeholder:text-neutral-500 focus:ring-2 focus:outline-none"
+              className="bg-card focus:border-accent-400 focus:ring-accent-400/20 w-full rounded-full border border-border py-2.5 pr-4 pl-11 text-sm text-foreground placeholder:text-neutral-500 focus:ring-2 focus:outline-none"
             />
             {search && (
               <button
@@ -100,7 +100,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
           </div>
 
           {/* Category pills */}
-          <div className="bg-white flex flex-wrap gap-1 rounded-full p-1 sm:inline-flex">
+          <div className="bg-card flex flex-wrap gap-1 rounded-full p-1 sm:inline-flex">
             {categories.map((category) => (
               <button
                 key={category}
@@ -121,7 +121,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
                     "relative z-10",
                     active === category
                       ? "text-primary-950"
-                      : "text-neutral-600 hover:text-primary-600",
+                      : "text-neutral-400 hover:text-primary-600",
                   )}
                 >
                   {category}

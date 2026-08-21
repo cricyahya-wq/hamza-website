@@ -4,24 +4,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 will-change-transform hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 disabled:hover:scale-100",
+  "inline-flex items-center justify-center gap-2 rounded-[12px] font-medium transition-all duration-200 will-change-transform hover:-translate-y-[2px] active:translate-y-[1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315FE8] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0",
   {
     variants: {
       variant: {
-        primary: "bg-primary-600 text-neutral-900 hover:bg-primary-700 shadow-[0_12px_30px_rgba(37,99,235,0.20)]",
+        primary: "bg-[#315FE8] text-white hover:bg-[#3F6FF0] shadow-[0_2px_8px_rgba(0,0,0,0.15)]",
+        cta: "bg-[#315FE8] text-white hover:bg-[#3F6FF0] shadow-[0_4px_12px_rgba(49,95,232,0.2)]",
         secondary:
-          "bg-white border border-primary-600 text-primary-600 hover:bg-primary-50",
-        cta: "bg-primary-600 text-white shadow-[0_12px_30px_rgba(37,99,235,0.20)] hover:bg-primary-700 hover:shadow-[0_16px_35px_rgba(37,99,235,0.30)]",
+          "bg-transparent border border-border text-foreground hover:bg-neutral-500/10",
         outline:
-          "bg-white border border-neutral-300 text-neutral-900 hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50",
+          "bg-transparent border border-border text-foreground hover:bg-neutral-500/10",
         "outline-dark":
-          "bg-transparent border border-white text-white hover:bg-white/10",
-        ghost: "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900",
+          "bg-transparent border border-border text-foreground hover:bg-neutral-500/10",
+        ghost: "text-neutral-500 hover:bg-neutral-500/10 hover:text-foreground",
       },
       size: {
-        sm: "px-4 py-2 text-sm",
-        md: "px-6 py-3 text-base",
-        lg: "px-8 py-4 text-lg",
+        sm: "px-4 py-2 text-sm min-h-[40px]",
+        md: "px-[24px] py-[14px] text-base min-h-[48px]", // Fits the 48-54px height & 20-28px padding
+        lg: "px-[28px] py-[16px] text-lg min-h-[54px]",
       },
     },
     defaultVariants: {

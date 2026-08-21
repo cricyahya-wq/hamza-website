@@ -25,7 +25,7 @@ export function SolutionShowcase() {
             >
               {/* Visual Side */}
               <FadeIn className={cn(!isEven && "lg:col-start-2")}>
-                <div className="group relative h-full min-h-[400px] w-full overflow-hidden rounded-3xl bg-white border border-neutral-200">
+                <div className="group relative h-full min-h-[400px] w-full overflow-hidden rounded-3xl bg-card border border-border">
                   <div
                     className={cn(
                       "absolute inset-0 bg-gradient-to-br opacity-20 transition-opacity duration-700 group-hover:opacity-40",
@@ -35,16 +35,16 @@ export function SolutionShowcase() {
                   <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 mix-blend-overlay" />
                   
                   {/* Decorative Elements */}
-                  <div className="absolute -left-1/4 top-1/4 h-1/2 w-1/2 rotate-12 rounded-[40px] bg-white/5 shadow-2xl backdrop-blur-3xl transition-transform duration-700 group-hover:rotate-45" />
+                  <div className="absolute -left-1/4 top-1/4 h-1/2 w-1/2 rotate-12 rounded-[40px] bg-foreground/5 shadow-2xl backdrop-blur-3xl transition-transform duration-700 group-hover:rotate-45" />
                   
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                    <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-3xl bg-white/10 shadow-2xl backdrop-blur-md ring-1 ring-white/20">
-                      <Icon className="h-12 w-12 text-neutral-900" />
+                    <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-3xl bg-foreground/10 shadow-2xl backdrop-blur-md ring-1 ring-white/20">
+                      <Icon className="h-12 w-12 text-foreground" />
                     </div>
                     
                     <div className="w-full max-w-sm space-y-3">
                       {showcase.features.map((feature, i) => (
-                        <div key={i} className="flex items-center justify-between rounded-xl bg-neutral-950/50 border border-neutral-200 p-4 backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02]">
+                        <div key={i} className="flex items-center justify-between rounded-xl bg-neutral-950/50 border border-border p-4 backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02]">
                           <span className="text-sm font-medium text-neutral-200">{feature}</span>
                           <CheckCircle2 className="h-4 w-4 text-accent-400" />
                         </div>
@@ -60,7 +60,7 @@ export function SolutionShowcase() {
                 delay={0.1}
               >
                 <div className={cn("max-w-xl", !isEven && "lg:ml-auto")}>
-                  <h2 className="font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+                  <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                     {showcase.title}
                   </h2>
 
@@ -69,7 +69,7 @@ export function SolutionShowcase() {
                       <h3 className="font-display text-sm font-bold tracking-wider text-rose-400 uppercase">
                         The Problem
                       </h3>
-                      <p className="mt-3 text-neutral-600 leading-relaxed">
+                      <p className="mt-3 text-neutral-400 leading-relaxed">
                         {showcase.problem}
                       </p>
                     </div>
@@ -78,14 +78,14 @@ export function SolutionShowcase() {
                       <h3 className="font-display text-sm font-bold tracking-wider text-emerald-400 uppercase">
                         MoosePBX Solution
                       </h3>
-                      <p className="mt-3 text-neutral-600 leading-relaxed">
+                      <p className="mt-3 text-neutral-400 leading-relaxed">
                         {showcase.solution}
                       </p>
                     </div>
                   </div>
 
                   <div className="mt-8">
-                    <h3 className="font-display text-sm font-bold text-neutral-900">
+                    <h3 className="font-display text-sm font-bold text-foreground">
                       Key Business Benefits
                     </h3>
                     <ul className="mt-4 grid gap-3 sm:grid-cols-2">

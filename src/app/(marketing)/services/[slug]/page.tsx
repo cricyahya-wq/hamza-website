@@ -62,7 +62,7 @@ export default async function ServicePage({ params }: Props) {
   return (
     <>
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-16 lg:pt-40 lg:pb-24">
+      <section className="relative overflow-hidden bg-background pt-32 pb-16 lg:pt-40 lg:pb-24">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
             <FadeIn>
@@ -70,10 +70,10 @@ export default async function ServicePage({ params }: Props) {
                 <Icon className="h-4 w-4 mr-2" />
                 Enterprise Solutions
               </div>
-              <h1 className="text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl mb-6 leading-[1.1]">
+              <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl mb-6 leading-[1.1]">
                 {service.title}
               </h1>
-              <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-lg">
+              <p className="text-xl text-neutral-400 mb-8 leading-relaxed max-w-lg">
                 {service.subtitle}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -100,14 +100,14 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* 2. DETAILED EXPLANATION */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-6">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-6">
                 Redefining {service.title}
               </h2>
-              <p className="text-lg text-neutral-600 leading-relaxed">
+              <p className="text-lg text-neutral-400 leading-relaxed">
                 {service.long_description}
               </p>
             </FadeIn>
@@ -116,7 +116,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {/* 3. KEY FEATURES */}
-      <Section id="features" className="bg-white relative">
+      <Section id="features" className="bg-background relative">
         <Container>
           <SectionHeading
             eyebrow="Key Features"
@@ -128,12 +128,12 @@ export default async function ServicePage({ params }: Props) {
             {service.features.map((feature, idx) => {
               const FeatureIcon = feature.icon;
               return (
-                <FadeIn key={idx} className="bg-surface-alt rounded-2xl p-6 border border-neutral-200 shadow-sm hover:shadow-md transition-shadow">
+                <FadeIn key={idx} className="bg-surface-alt rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-12 w-12 rounded-xl bg-primary-50 flex items-center justify-center mb-6">
                     <FeatureIcon className="h-6 w-6 text-primary-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-3">{feature.title}</h3>
-                  <p className="text-neutral-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                  <p className="text-neutral-400 leading-relaxed">{feature.description}</p>
                 </FadeIn>
               );
             })}
@@ -142,7 +142,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {/* 4. BENEFITS & USE CASES */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Benefits */}
@@ -159,8 +159,8 @@ export default async function ServicePage({ params }: Props) {
                       <CheckCircle2 className="h-6 w-6 text-primary-600" />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-neutral-900 mb-2">{benefit.title}</h4>
-                      <p className="text-neutral-600">{benefit.description}</p>
+                      <h4 className="text-xl font-bold text-foreground mb-2">{benefit.title}</h4>
+                      <p className="text-neutral-400">{benefit.description}</p>
                     </div>
                   </FadeIn>
                 ))}
@@ -176,9 +176,9 @@ export default async function ServicePage({ params }: Props) {
               />
               <div className="mt-10 grid gap-6">
                 {service.use_cases.map((useCase, idx) => (
-                  <FadeIn key={idx} delay={idx * 0.1} className="bg-white rounded-xl p-6 shadow-sm border border-neutral-100">
-                    <h4 className="text-lg font-bold text-neutral-900 mb-2">{useCase.title}</h4>
-                    <p className="text-neutral-600">{useCase.description}</p>
+                  <FadeIn key={idx} delay={idx * 0.1} className="bg-card rounded-xl p-6 shadow-sm border border-border">
+                    <h4 className="text-lg font-bold text-foreground mb-2">{useCase.title}</h4>
+                    <p className="text-neutral-400">{useCase.description}</p>
                   </FadeIn>
                 ))}
               </div>
@@ -188,17 +188,17 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {/* 5. TECH SPECS & WHY CHOOSE */}
-      <Section className="bg-neutral-900 relative py-24">
+      <Section className="bg-surface-alt relative py-24">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Tech Specs */}
             <div>
               <h2 className="text-3xl font-bold text-white mb-8">Technical Specifications</h2>
-              <div className="bg-neutral-800/50 rounded-2xl border border-neutral-700/50 overflow-hidden">
+              <div className="bg-neutral-800/50 rounded-2xl border border-border/50 overflow-hidden">
                 <table className="w-full text-left border-collapse">
                   <tbody>
                     {service.technical_specs.map((spec, idx) => (
-                      <tr key={idx} className="border-b border-neutral-700/50 last:border-0">
+                      <tr key={idx} className="border-b border-border/50 last:border-0">
                         <th className="py-4 px-6 text-neutral-400 font-medium w-1/3">{spec.label}</th>
                         <td className="py-4 px-6 text-white font-semibold">{spec.value}</td>
                       </tr>
@@ -230,7 +230,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {/* 6. FAQ */}
-      <Section className="bg-white relative">
+      <Section className="bg-background relative">
         <Container>
           <SectionHeading
             eyebrow="FAQ"
@@ -240,9 +240,9 @@ export default async function ServicePage({ params }: Props) {
           />
           <div className="max-w-3xl mx-auto mt-16 space-y-6">
             {service.faq.map((faq, idx) => (
-              <FadeIn key={idx} className="bg-surface-alt rounded-xl p-6 border border-neutral-200">
-                <h4 className="text-lg font-bold text-neutral-900 mb-3">{faq.question}</h4>
-                <p className="text-neutral-600">{faq.answer}</p>
+              <FadeIn key={idx} className="bg-surface-alt rounded-xl p-6 border border-border">
+                <h4 className="text-lg font-bold text-foreground mb-3">{faq.question}</h4>
+                <p className="text-neutral-400">{faq.answer}</p>
               </FadeIn>
             ))}
           </div>
@@ -250,7 +250,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {/* 7. RELATED SERVICES */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Ecosystem"
@@ -262,10 +262,10 @@ export default async function ServicePage({ params }: Props) {
               <FadeIn key={idx} className="flex h-full">
                 <Link 
                   href={`/services/${rs.slug}`}
-                  className="group flex flex-col w-full bg-white rounded-2xl border border-neutral-200 p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 hover:border-primary-300"
+                  className="group flex flex-col w-full bg-card rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 hover:border-primary-300"
                 >
-                  <h3 className="text-2xl font-bold text-neutral-900 mb-3">{rs.title}</h3>
-                  <p className="text-neutral-600 mb-6 flex-grow">{rs.description}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{rs.title}</h3>
+                  <p className="text-neutral-400 mb-6 flex-grow">{rs.description}</p>
                   <span className="flex items-center text-sm font-bold uppercase text-primary-600 mt-auto">
                     View Details
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -283,18 +283,18 @@ export default async function ServicePage({ params }: Props) {
         description="Our engineers are standing by to architect the perfect solution for your business."
       />
       
-      <Section id="contact" className="bg-white relative border-t border-neutral-200">
+      <Section id="contact" className="bg-background relative border-t border-border">
         <Container>
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Get in Touch
               </h2>
-              <p className="mt-4 text-lg text-neutral-600">
+              <p className="mt-4 text-lg text-neutral-400">
                 Request a demo or ask a technical question about our {service.title}.
               </p>
             </div>
-            <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-100">
+            <div className="bg-card rounded-3xl p-8 sm:p-12 shadow-2xl border border-border">
                <ContactForm />
             </div>
           </div>

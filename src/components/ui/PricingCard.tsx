@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { TiltCard } from "@/components/effects/TiltCard";
 import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
@@ -27,53 +26,53 @@ export function PricingCard({
   className,
 }: PricingCardProps) {
   return (
-    <TiltCard max={5} className={cn("h-full", className)}>
+    <div className={cn("h-full group", className)}>
       <div
         className={cn(
-          "relative flex h-full flex-col rounded-3xl border p-8",
+          "relative flex h-full flex-col rounded-[24px] border p-8 transition-all duration-300",
           popular
-            ? "border-accent-400/50 from-accent-950/60 to-card shadow-accent-950/40 bg-gradient-to-b shadow-xl"
-            : "bg-white border-neutral-200",
+            ? "border-[#315FE8] bg-card shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-1"
+            : "border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-[#315FE8]/30 hover:bg-card"
         )}
       >
         {popular && (
-          <span className="bg-accent-400 text-primary-950 absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-semibold">
+          <span className="bg-[#A98B52] text-white absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold tracking-wide uppercase">
             Most popular
           </span>
         )}
 
-        <h3 className="font-display text-xl font-semibold text-neutral-900">
+        <h3 className="font-display text-2xl font-bold text-foreground">
           {name}
         </h3>
-        <p className="mt-2 text-sm text-neutral-400">{description}</p>
+        <p className="mt-2 text-sm text-neutral-500 font-medium leading-relaxed">{description}</p>
 
-        <div className="mt-6 flex items-baseline gap-1">
-          <span className="font-display text-4xl font-bold text-neutral-900">
+        <div className="mt-8 flex items-baseline gap-1 pb-8 border-b border-border">
+          <span className="font-display text-5xl font-bold text-foreground">
             {price}
           </span>
           {price !== "Custom" && (
-            <span className="text-sm text-neutral-400">{period}</span>
+            <span className="text-sm font-bold text-neutral-500 uppercase tracking-wider ml-1">{period}</span>
           )}
         </div>
 
-        <ul className="mt-8 flex-1 space-y-3">
+        <ul className="mt-8 flex-1 space-y-4">
           {features.map((feature) => (
             <li key={feature} className="flex items-start gap-3">
-              <Check className="text-accent-400 mt-0.5 size-5 shrink-0" />
-              <span className="text-sm text-neutral-700">{feature}</span>
+              <Check className="text-[#315FE8] mt-0.5 h-5 w-5 shrink-0" strokeWidth={3} />
+              <span className="text-sm font-medium text-foreground">{feature}</span>
             </li>
           ))}
         </ul>
 
         <Button
           href={ctaHref}
-          variant={popular ? "cta" : "secondary"}
-          size="md"
-          className="mt-8 w-full"
+          variant={popular ? "primary" : "outline"}
+          size="lg"
+          className="mt-10 w-full"
         >
           {ctaLabel}
         </Button>
       </div>
-    </TiltCard>
+    </div>
   );
 }

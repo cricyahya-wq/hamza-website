@@ -1,6 +1,7 @@
 "use client";
 
 import { m } from "framer-motion";
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
@@ -12,28 +13,32 @@ const showcaseData = [
     description:
       "Eliminate expensive on-premises hardware and IT maintenance contracts. With MoosePBX's Cloud PBX, you can manage your entire phone system from a single web dashboard. Provision new numbers instantly, add users with a click, and allow your team to work from anywhere with an internet connection while maintaining professional business caller ID.",
     icon: Cloud,
-    color: "from-accent-400 to-primary-600",
+    image: "/images/feature-cloud-pbx.jpg",
+    imageAlt: "Cloud PBX dashboard showing extensions and user status",
   },
   {
     title: "Smart Call Routing",
     description:
       "Never lose a lead to voicemail again. Build intelligent routing flows that direct calls based on department, time of day, business hours, and language preferences. Use our drag-and-drop IVR builder to create custom greetings and menus that ensure every caller reaches the most qualified available agent immediately.",
     icon: GitMerge,
-    color: "from-secondary-400 to-primary-700",
+    image: "/images/feature-call-routing.jpg",
+    imageAlt: "Visual IVR call flow builder with drag-and-drop nodes",
   },
   {
     title: "AI Analytics",
     description:
       "Stop guessing and start optimizing. Our AI-powered analytics engine transcribes calls, detects sentiment, and highlights trends automatically. View real-time dashboards to monitor queue depths and agent availability, or dig into historical reports to identify peak calling times and coaching opportunities.",
     icon: BarChart,
-    color: "from-accent-500 to-secondary-600",
+    image: "/images/feature-ai-analytics.jpg",
+    imageAlt: "AI analytics dashboard with call volume charts and sentiment analysis",
   },
   {
     title: "Call Recording",
     description:
       "Ensure compliance, improve quality assurance, and streamline employee training with secure, automatic call recording. Recordings are encrypted at rest, securely stored in the cloud, and easily searchable by date, agent, or phone number. Access them instantly from your dashboard whenever you need them.",
     icon: Voicemail,
-    color: "from-primary-400 to-primary-800",
+    image: "/images/feature-call-recording.jpg",
+    imageAlt: "Call recording dashboard with waveform player and transcript",
   },
 ];
 
@@ -52,28 +57,21 @@ export function FeatureShowcase() {
                 !isEven && "lg:grid-cols-[1fr_1fr] lg:rtl"
               )}
             >
-              {/* Image / Graphic Side */}
+              {/* Image Side */}
               <FadeIn
                 className={cn(!isEven && "lg:col-start-2")}
                 y={0}
               >
-                <div className="group relative aspect-square overflow-hidden rounded-3xl sm:aspect-[4/3] lg:aspect-square">
-                  <div
-                    className={cn(
-                      "absolute inset-0 bg-gradient-to-br opacity-80 transition-transform duration-700 group-hover:scale-105",
-                      item.color
-                    )}
+                <div className="group relative aspect-square overflow-hidden rounded-3xl sm:aspect-[4/3] lg:aspect-square shadow-2xl border border-border">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  {/* Abstract Glass shapes */}
-                  <div className="absolute -left-1/4 top-1/4 h-1/2 w-1/2 rotate-12 rounded-[40px] bg-white/10 shadow-2xl backdrop-blur-3xl transition-transform duration-700 group-hover:rotate-45 group-hover:scale-110" />
-                  <div className="absolute -right-1/4 bottom-1/4 h-2/3 w-2/3 -rotate-12 rounded-[60px] bg-black/20 shadow-2xl backdrop-blur-3xl transition-transform duration-700 group-hover:-rotate-45 group-hover:scale-110" />
-                  
-                  {/* Icon Focus */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-32 w-32 items-center justify-center rounded-3xl bg-white/10 shadow-2xl backdrop-blur-md ring-1 ring-white/20">
-                      <Icon className="h-16 w-16 text-neutral-900 drop-shadow-lg" />
-                    </div>
-                  </div>
+                  {/* Subtle overlay for polish */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                 </div>
               </FadeIn>
 
@@ -87,10 +85,10 @@ export function FeatureShowcase() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-400/10 border border-accent-400/20">
                     <Icon className="h-6 w-6 text-accent-400" />
                   </div>
-                  <h2 className="font-display mt-8 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+                  <h2 className="font-display mt-8 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                     {item.title}
                   </h2>
-                  <p className="mt-6 text-lg leading-relaxed text-neutral-600">
+                  <p className="mt-6 text-lg leading-relaxed text-neutral-400">
                     {item.description}
                   </p>
                 </div>
@@ -102,3 +100,4 @@ export function FeatureShowcase() {
     </div>
   );
 }
+

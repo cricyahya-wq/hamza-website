@@ -63,7 +63,7 @@ export default function FeaturesPage() {
       </Section>
 
       {/* 3. FEATURE SHOWCASE */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Deep Dive"
@@ -77,7 +77,7 @@ export default function FeaturesPage() {
       </Section>
 
       {/* 4. INTEGRATIONS */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Integrations"
@@ -90,7 +90,7 @@ export default function FeaturesPage() {
       </Section>
 
       {/* 5. SECURITY & RELIABILITY */}
-      <Section className="bg-white relative border-y border-neutral-200">
+      <Section className="bg-background relative border-y border-border">
         <Container>
           <SectionHeading
             eyebrow="Security & Trust"
@@ -116,7 +116,7 @@ export default function FeaturesPage() {
       </Section>
 
       {/* 7. WHY CHOOSE MOOSEPBX */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
+      <Section className="bg-surface-alt relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Why MoosePBX"

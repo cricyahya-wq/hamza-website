@@ -105,13 +105,13 @@ export function PageHero({
         </FadeIn>
         <h1
           ref={headlineRef}
-          className="font-display mt-6 text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl"
+          className="font-display mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
         >
           {title}
         </h1>
         {description && (
           <FadeIn delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400">
               {description}
             </p>
           </FadeIn>
@@ -127,11 +127,11 @@ export function PageHero({
         {stats && stats.length > 0 && (
           <FadeIn
             delay={0.4}
-            className="mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-8 border-t border-neutral-200 pt-10 sm:grid-cols-4"
+            className="mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-8 border-t border-border pt-10 sm:grid-cols-4"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-display text-2xl font-bold text-neutral-900 sm:text-3xl">
+                <p className="font-display text-2xl font-bold text-foreground sm:text-3xl">
                   <AnimatedCounter
                     value={stat.value}
                     prefix={stat.prefix}

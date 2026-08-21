@@ -32,13 +32,13 @@ export function SectionHeading({
         </FadeIn>
       )}
       <FadeIn delay={0.1}>
-        <h2 className="font-display mt-6 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+        <h2 className="font-display mt-6 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           {title}
         </h2>
       </FadeIn>
       {description && (
         <FadeIn delay={0.2}>
-          <p className="mt-4 text-lg text-neutral-600">{description}</p>
+          <p className="mt-4 text-lg text-neutral-400">{description}</p>
         </FadeIn>
       )}
     </div>

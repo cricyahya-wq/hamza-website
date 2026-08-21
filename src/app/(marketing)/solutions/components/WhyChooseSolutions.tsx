@@ -14,12 +14,12 @@ export function WhyChooseSolutions() {
             <m.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              className="group flex h-full flex-col rounded-3xl bg-white border border-neutral-200 p-8 transition-colors hover:border-accent-400/30 hover:bg-neutral-900"
+              className="group flex h-full flex-col rounded-3xl bg-card border border-border p-8 transition-colors hover:border-accent-400/30 hover:bg-surface-alt"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white border border-neutral-200 transition-colors group-hover:border-accent-400/30 group-hover:bg-accent-400/10">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-card border border-border transition-colors group-hover:border-accent-400/30 group-hover:bg-accent-400/10">
                 <Icon className="h-6 w-6 text-neutral-400 transition-colors group-hover:text-accent-400" />
               </div>
-              <h3 className="font-display mt-6 text-xl font-bold text-neutral-900">
+              <h3 className="font-display mt-6 text-xl font-bold text-foreground">
                 {feature.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-neutral-400">

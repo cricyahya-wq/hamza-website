@@ -11,7 +11,7 @@ export function SolutionsSuccess() {
   if (!success) return null;
   
   return (
-    <div className="relative overflow-hidden rounded-[2.5rem] bg-white border border-neutral-200">
+    <div className="relative overflow-hidden rounded-[2.5rem] bg-card border border-border">
       <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay" />
       <div className="absolute -left-1/4 -top-1/4 h-1/2 w-1/2 rounded-full bg-accent-500/10 blur-[120px]" />
       <div className="absolute -bottom-1/4 -right-1/4 h-1/2 w-1/2 rounded-full bg-primary-500/10 blur-[120px]" />
@@ -21,7 +21,7 @@ export function SolutionsSuccess() {
           <div className="flex h-full flex-col justify-center">
             <Quote className="h-12 w-12 text-accent-400 opacity-50" />
             <blockquote className="mt-8">
-              <p className="font-display text-2xl font-medium leading-relaxed text-neutral-900 sm:text-3xl">
+              <p className="font-display text-2xl font-medium leading-relaxed text-foreground sm:text-3xl">
                 &quot;{success.quote}&quot;
               </p>
             </blockquote>
@@ -35,7 +35,7 @@ export function SolutionsSuccess() {
                 />
               </div>
               <div>
-                <p className="font-display font-bold text-neutral-900">
+                <p className="font-display font-bold text-foreground">
                   {success.author}
                 </p>
                 <p className="text-sm text-neutral-400">
@@ -51,7 +51,7 @@ export function SolutionsSuccess() {
 
         <FadeIn delay={0.1} className="lg:border-l lg:border-neutral-800 lg:pl-20">
           <div className="flex h-full flex-col justify-center">
-            <h3 className="font-display text-lg font-bold text-neutral-900">
+            <h3 className="font-display text-lg font-bold text-foreground">
               Business Results
             </h3>
             <div className="mt-8 grid gap-8 sm:grid-cols-2">

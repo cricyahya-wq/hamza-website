@@ -27,27 +27,35 @@ export const metadata: Metadata = {
 
 export default function IndustriesPage() {
   return (
-    <>
+    <div className="bg-background">
       {/* 1. HERO SECTION */}
-      <PageHero
-        eyebrow="Industries"
-        title="Communication Solutions Built for Every Industry"
-        description="From healthcare to retail, MoosePBX helps organizations improve communication, increase productivity, reduce operational costs, and deliver exceptional customer experiences."
-        variant="secondary"
-        actions={
-          <>
-            <Button href="/solutions" variant="primary" size="lg">
-              Explore Solutions
-            </Button>
-            <Button href="/contact" variant="outline" size="lg">
-              Contact Sales
-            </Button>
-          </>
-        }
-      />
+      <section className="relative overflow-hidden pt-32 pb-24 border-b border-border bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-surface-alt via-background to-background"></div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
+          <div className="mx-auto max-w-4xl">
+            <span className="mb-6 inline-block text-sm font-semibold tracking-wider text-accent-400 uppercase">
+              INDUSTRIES
+            </span>
+            <h1 className="font-display mb-8 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Communication Solutions Built for Every Industry.
+            </h1>
+            <p className="font-sans mx-auto max-w-3xl text-lg leading-relaxed text-neutral-500">
+              From healthcare to retail, MoosePBX helps organizations improve communication, increase productivity, reduce operational costs, and deliver exceptional customer experiences.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+               <Button href="/solutions" variant="primary" size="lg">
+                 Explore Solutions
+               </Button>
+               <Button href="/contact" variant="outline" size="lg" className="border-border text-foreground hover:bg-surface-alt">
+                 Contact Sales
+               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. INDUSTRIES OVERVIEW GRID */}
-      <Section className="bg-white relative">
+      <Section className="bg-background relative">
         <Container>
           <SectionHeading
             eyebrow="Who We Serve"
@@ -62,7 +70,7 @@ export default function IndustriesPage() {
       </Section>
 
       {/* 3. INDIVIDUAL INDUSTRY SHOWCASE */}
-      <Section className="bg-white relative border-t border-neutral-200">
+      <Section className="bg-background relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Deep Dive"
@@ -76,7 +84,7 @@ export default function IndustriesPage() {
       </Section>
 
       {/* 4. BENEFITS ACROSS ALL INDUSTRIES */}
-      <Section className="bg-white relative border-t border-neutral-200">
+      <Section className="bg-background relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Universal Benefits"
@@ -91,7 +99,7 @@ export default function IndustriesPage() {
       </Section>
 
       {/* 5. CUSTOMER SUCCESS HIGHLIGHTS */}
-      <Section className="bg-white relative">
+      <Section className="bg-background relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="Customer Success"
@@ -105,7 +113,7 @@ export default function IndustriesPage() {
       </Section>
 
       {/* 6. WHY BUSINESSES CHOOSE MOOSEPBX */}
-      <Section className="bg-white relative border-t border-neutral-200">
+      <Section className="bg-background relative border-t border-border">
         <Container>
           <SectionHeading
             eyebrow="The MoosePBX Difference"
@@ -127,6 +135,6 @@ export default function IndustriesPage() {
         secondaryLabel="Contact Sales"
         secondaryHref="/contact?reason=sales"
       />
-    </>
+    </div>
   );
 }

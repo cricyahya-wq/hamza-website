@@ -87,7 +87,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#071923] border-t border-neutral-800">
+    <footer className="bg-background border-t border-border">
       <Container className="py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
@@ -103,25 +103,25 @@ export function Footer() {
                 className="h-20 w-auto rounded-xl"
               />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
               {siteConfig.mission}
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-4 inline-block text-sm text-white/75 hover:text-accent-400"
+              className="mt-4 inline-block text-sm text-neutral-500 hover:text-accent-400"
             >
               {siteConfig.email}
             </a>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Product</p>
+            <p className="text-sm font-semibold text-foreground">Product</p>
             <ul className="mt-4 space-y-3">
               {productLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/75 hover:text-accent-400"
+                    className="text-sm text-neutral-500 hover:text-accent-400"
                   >
                     {link.label}
                   </Link>
@@ -131,13 +131,13 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Company</p>
+            <p className="text-sm font-semibold text-foreground">Company</p>
             <ul className="mt-4 space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/75 hover:text-accent-400"
+                    className="text-sm text-neutral-500 hover:text-accent-400"
                   >
                     {link.label}
                   </Link>
@@ -147,8 +147,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Stay in the loop</p>
-            <p className="mt-4 text-sm text-white/75">
+            <p className="text-sm font-semibold text-foreground">Stay in the loop</p>
+            <p className="mt-4 text-sm text-neutral-500">
               Product updates and VoIP insights, straight to your inbox.
             </p>
             {status === "success" ? (
@@ -167,7 +167,7 @@ export function Footer() {
                     type="email"
                     required
                     placeholder="you@company.com"
-                    className="bg-card focus:border-accent-400 focus:ring-accent-400/20 w-full min-w-0 rounded-full border border-neutral-700 px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:ring-2 focus:outline-none"
+                    className="bg-surface-alt focus:border-accent-400 focus:ring-[#C8A96B]/20 w-full min-w-0 rounded-full border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-neutral-400 focus:ring-2 focus:outline-none"
                   />
                   {/* Honeypot field — hidden from real users. */}
                   <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -184,7 +184,7 @@ export function Footer() {
                     type="submit"
                     aria-label="Subscribe"
                     disabled={status === "submitting"}
-                    className="bg-primary-600 text-white hover:bg-primary-700 flex size-10 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-60"
+                    className="bg-[#315FE8] text-white hover:bg-[#2F5BEA] flex size-10 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-60"
                   >
                     {status === "submitting" ? (
                       <Loader2 className="size-4 animate-spin" />
@@ -194,27 +194,27 @@ export function Footer() {
                   </button>
                 </div>
                 {status === "error" && (
-                  <p className="mt-2 text-xs text-red-300">{errorMessage}</p>
+                  <p className="mt-2 text-xs text-red-500">{errorMessage}</p>
                 )}
               </form>
             )}
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-800 pt-8 sm:flex-row">
-          <p className="text-sm text-white/50">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 sm:flex-row">
+          <p className="text-sm text-neutral-500">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
           
-          <p className="text-sm text-white/50 text-center sm:text-left">
+          <p className="text-sm text-neutral-500 text-center sm:text-left">
             {siteConfig.tagline}
           </p>
 
           <div className="flex items-center gap-2">
             {siteConfig.links?.facebook && (
               <div
-                className="p-2 rounded-md border border-transparent text-white/40"
+                className="p-2 rounded-md border border-transparent text-neutral-400"
                 aria-label="Facebook"
               >
                 <Facebook className="size-5" />
@@ -225,7 +225,7 @@ export function Footer() {
                 href={siteConfig.links.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 rounded-md border border-transparent text-white/75 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all cursor-pointer"
+                className="p-2 rounded-md border border-transparent text-neutral-500 hover:text-foreground hover:bg-foreground/5 hover:border-border transition-all cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="size-5" />
@@ -233,7 +233,7 @@ export function Footer() {
             )}
             {siteConfig.links?.instagram && (
               <div
-                className="p-2 rounded-md border border-transparent text-white/40"
+                className="p-2 rounded-md border border-transparent text-neutral-400"
                 aria-label="Instagram"
               >
                 <Instagram className="size-5" />
@@ -241,7 +241,7 @@ export function Footer() {
             )}
             {siteConfig.links?.twitter && (
               <div
-                className="p-2 rounded-md border border-transparent text-white/40"
+                className="p-2 rounded-md border border-transparent text-neutral-400"
                 aria-label="X (Twitter)"
               >
                 <Twitter className="size-5" />
@@ -249,7 +249,7 @@ export function Footer() {
             )}
             {siteConfig.links?.youtube && (
               <div
-                className="p-2 rounded-md border border-transparent text-white/40"
+                className="p-2 rounded-md border border-transparent text-neutral-400"
                 aria-label="YouTube"
               >
                 <Youtube className="size-5" />

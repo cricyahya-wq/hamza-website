@@ -51,17 +51,17 @@ export function Timeline({ steps }: { steps: TimelineStep[] }) {
             delay={index * 0.1}
             className="relative pl-16"
           >
-            <div className="border-accent-400/30 bg-white text-accent-400 absolute left-0 flex size-10 items-center justify-center rounded-full border">
+            <div className="border-accent-400/30 bg-card text-accent-400 absolute left-0 flex size-10 items-center justify-center rounded-full border">
               {step.icon ?? (
                 <span className="font-display text-sm font-semibold">
                   {index + 1}
                 </span>
               )}
             </div>
-            <h3 className="font-display text-lg font-semibold text-neutral-900">
+            <h3 className="font-display text-lg font-semibold text-foreground">
               {step.title}
             </h3>
-            <p className="mt-1.5 leading-relaxed text-neutral-600">
+            <p className="mt-1.5 leading-relaxed text-neutral-400">
               {step.description}
             </p>
           </FadeIn>

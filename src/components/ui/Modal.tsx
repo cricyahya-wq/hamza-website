@@ -73,7 +73,7 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className={cn(
-              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl outline-none sm:p-8",
+              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-foreground/5 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl outline-none sm:p-8",
               className,
             )}
           >
@@ -81,12 +81,12 @@ export function Modal({
               type="button"
               onClick={onClose}
               aria-label="Close dialog"
-              className="absolute top-5 right-5 flex size-8 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-50 hover:text-primary-600"
+              className="absolute top-5 right-5 flex size-8 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-surface-alt hover:text-primary-600"
             >
               <X className="size-5" />
             </button>
             {title && (
-              <h2 className="font-display pr-8 text-xl font-semibold text-neutral-900">
+              <h2 className="font-display pr-8 text-xl font-semibold text-foreground">
                 {title}
               </h2>
             )}

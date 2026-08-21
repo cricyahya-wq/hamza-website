@@ -1,125 +1,47 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PageHero } from "@/components/sections/PageHero";
 import { CtaBanner } from "@/components/ui/CtaBanner";
-import { Button } from "@/components/ui/Button";
-
-// Specialized Solutions page components
-import { SolutionsGrid } from "./components/SolutionsGrid";
-import { SolutionShowcase } from "./components/SolutionShowcase";
-import { SolutionsBenefits } from "./components/SolutionsBenefits";
-import { SolutionsSuccess } from "./components/SolutionsSuccess";
-import { WhyChooseSolutions } from "./components/WhyChooseSolutions";
+import { PremiumSolutions } from "./components/PremiumSolutions";
 
 export const metadata: Metadata = {
-  title: "Solutions | Intelligent Business Communication | MoosePBX",
+  title: "Solutions | Premium Business Communication | MoosePBX",
   description:
-    "Discover how MoosePBX solves real-world business communication challenges through intelligent, scalable, and secure VoIP solutions.",
+    "From complete call centers and outbound dialing to secure SIP infrastructure and AI voice automation, MoosePBX brings the right technology together around your business.",
   openGraph: {
-    title: "Solutions | Intelligent Business Communication | MoosePBX",
+    title: "Solutions | Premium Business Communication | MoosePBX",
     description:
-      "Discover how MoosePBX solves real-world business communication challenges through intelligent, scalable, and secure VoIP solutions.",
+      "From complete call centers and outbound dialing to secure SIP infrastructure and AI voice automation, MoosePBX brings the right technology together around your business.",
     type: "website",
   },
 };
 
 export default function SolutionsPage() {
   return (
-    <>
-      {/* 1. HERO SECTION */}
-      <PageHero
-        eyebrow="Solutions"
-        title="Business Communication Solutions That Scale With You"
-        description="Discover intelligent communication solutions designed to improve collaboration, reduce costs, enhance customer experience, and help your business grow."
-        variant="primary"
-        actions={
-          <>
-            <Button href="/pricing" variant="primary" size="lg">
-              Explore Pricing
-            </Button>
-            <Button href="/contact?reason=sales" variant="outline" size="lg">
-              Book a Demo
-            </Button>
-          </>
-        }
-      />
-
-      {/* 2. SOLUTIONS OVERVIEW GRID */}
-      <Section className="bg-surface-alt relative">
-        <Container>
-          <SectionHeading
-            eyebrow="Overview"
-            title="Comprehensive communication tools"
-            description="Replace disjointed legacy systems with a single unified platform built for modern teams."
-            align="center"
-          />
-          <div className="mt-16">
-            <SolutionsGrid />
+    <div className="bg-background">
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden pt-32 pb-24 border-b border-border">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
+          <div className="mx-auto max-w-4xl">
+            <span className="mb-6 inline-block text-sm font-bold tracking-[0.15em] text-accent-400 uppercase">
+              BUILT AROUND YOUR COMMUNICATION
+            </span>
+            <h1 className="font-display mb-8 text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.1]">
+              Solutions That Move Every Conversation Forward.
+            </h1>
+            <p className="font-sans mx-auto max-w-3xl text-xl leading-relaxed text-neutral-500">
+              From complete call centers and outbound dialing to secure SIP infrastructure and AI voice automation, MoosePBX brings the right technology together around your business.
+            </p>
           </div>
-        </Container>
-      </Section>
-
-      {/* 3. DETAILED SOLUTION SHOWCASE */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
-        <Container>
-          <SectionHeading
-            eyebrow="Business Value"
-            title="Solving your biggest communication challenges"
-            description="We focus on delivering measurable business outcomes, not just technical features."
-          />
-        </Container>
-        <div className="mt-20">
-          <SolutionShowcase />
         </div>
-      </Section>
+      </section>
 
-      {/* 4. BENEFITS ACROSS ALL SOLUTIONS */}
-      <Section className="bg-white relative border-t border-neutral-200">
-        <Container>
-          <SectionHeading
-            eyebrow="Core Benefits"
-            title="The MoosePBX advantage"
-            description="No matter how you deploy our platform, these fundamental benefits are built into every solution."
-            align="center"
-          />
-          <div className="mt-16">
-            <SolutionsBenefits />
-          </div>
-        </Container>
-      </Section>
+      {/* PREMIUM SOLUTIONS GRID */}
+      <section className="py-24 relative">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <PremiumSolutions />
+        </div>
+      </section>
 
-      {/* 5. CUSTOMER SUCCESS HIGHLIGHTS */}
-      <Section className="bg-surface-alt relative">
-        <Container>
-          <SectionHeading
-            eyebrow="Customer Success"
-            title="Proven impact"
-            description="See how growing businesses are using MoosePBX solutions to transform their operations."
-          />
-          <div className="mt-16">
-            <SolutionsSuccess />
-          </div>
-        </Container>
-      </Section>
-
-      {/* 6. WHY BUSINESSES CHOOSE MOOSEPBX */}
-      <Section className="bg-surface-alt relative border-t border-neutral-200">
-        <Container>
-          <SectionHeading
-            eyebrow="The Difference"
-            title="Why businesses trust us"
-            description="We combine enterprise-grade reliability with the agility and ease of use of a modern startup."
-            align="center"
-          />
-          <div className="mt-16">
-            <WhyChooseSolutions />
-          </div>
-        </Container>
-      </Section>
-
-      {/* 7. FINAL CTA */}
+      {/* FINAL CTA */}
       <CtaBanner
         title="Ready to Modernize Your Business Communication?"
         description="Transform the way your business connects with customers and teams using secure, scalable, AI-powered communication solutions."
@@ -127,6 +49,6 @@ export default function SolutionsPage() {
         secondaryLabel="Contact Sales"
         secondaryHref="/contact?reason=sales"
       />
-    </>
+    </div>
   );
 }
