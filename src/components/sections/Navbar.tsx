@@ -64,7 +64,7 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden items-center md:flex lg:gap-10">
+          <div className="hidden items-center md:flex md:gap-5 lg:gap-10">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -72,7 +72,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative text-[15px] font-medium transition-colors hover:text-accent-400 py-2",
+                    "relative text-sm lg:text-[15px] font-medium transition-colors hover:text-accent-400 py-2 whitespace-nowrap",
                     isActive ? "text-accent-400" : "text-neutral-500"
                   )}
                 >
