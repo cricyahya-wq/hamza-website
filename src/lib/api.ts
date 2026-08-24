@@ -17,11 +17,13 @@ export class ApiError extends Error {
   }
 }
 
-async function postJson<T>(path: string, body: unknown): Promise<T> {
+async function postJson<T>(path: string, body: unknown, useRelativeUrl = false): Promise<T> {
   let response: Response;
 
+  const url = useRelativeUrl ? path : `${API_URL}${path}`;
+
   try {
-    response = await fetch(`${API_URL}${path}`, {
+    response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -56,7 +58,8 @@ export interface ContactPayload {
 }
 
 export function submitContact(payload: ContactPayload) {
-  return postJson<{ message: string; id: string }>("/api/contact", payload);
+  // Uses the internal Next.js API route — no external backend required.
+  return postJson<{ message: string; id: string }>("/api/contact", payload, true);
 }
 
 export interface NewsletterPayload {
