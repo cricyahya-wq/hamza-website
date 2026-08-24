@@ -80,6 +80,7 @@ const getIndustryDetails = (title: string) => {
 };
 
 export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupProps) {
+  if (!industry) return null;
   const details = getIndustryDetails(industry.title);
   const Icon = industry.icon;
 

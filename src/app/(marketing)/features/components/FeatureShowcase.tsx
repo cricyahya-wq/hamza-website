@@ -44,7 +44,7 @@ const showcaseData = [
 
 export function FeatureShowcase() {
   return (
-    <div className="space-y-24 sm:space-y-32">
+    <div className="space-y-16 sm:space-y-24 lg:space-y-32">
       {showcaseData.map((item, index) => {
         const isEven = index % 2 === 0;
         const Icon = item.icon;
@@ -53,7 +53,7 @@ export function FeatureShowcase() {
           <Container key={item.title}>
             <div
               className={cn(
-                "grid items-center gap-12 lg:grid-cols-2 lg:gap-24",
+                "grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-24",
                 !isEven && "lg:grid-cols-[1fr_1fr] lg:rtl"
               )}
             >

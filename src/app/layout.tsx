@@ -57,7 +57,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col font-sans">
+      <body className="flex min-h-full flex-col font-sans overflow-x-hidden">
         <Providers>{children}</Providers>
       </body>
     </html>

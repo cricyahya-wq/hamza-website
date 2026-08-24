@@ -278,9 +278,9 @@ const AIVoiceVisual = () => {
 };
 
 export function Features() {
-  const [activeTab, setActiveTab] = useState(featureCategories[0].id);
+  const [activeTab, setActiveTab] = useState(featureCategories[0]!.id);
 
-  const activeCategory = featureCategories.find(c => c.id === activeTab)!;
+  const activeCategory = featureCategories.find(c => c.id === activeTab) ?? featureCategories[0]!;
 
   return (
     <Section id="features" className="bg-background py-24 relative overflow-hidden border-b border-border">
@@ -301,7 +301,7 @@ export function Features() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 min-h-[600px] lg:min-h-[500px]">
           
           {/* LEFT: FEATURE MENU */}
-          <div className="lg:w-5/12 flex flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x">
+          <div className="lg:w-5/12 flex flex-col gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x scrollbar-hide">
             <div className="flex lg:flex-col gap-3 min-w-max lg:min-w-0 px-1">
               {featureCategories.map((category) => {
                 const isActive = activeTab === category.id;
@@ -310,7 +310,7 @@ export function Features() {
                     key={category.id}
                     onClick={() => setActiveTab(category.id)}
                     className={cn(
-                      "snap-center flex-shrink-0 text-left w-72 lg:w-full rounded-[16px] p-5 border transition-all duration-300 group outline-none",
+                      "snap-center flex-shrink-0 text-left w-64 sm:w-72 lg:w-full rounded-[16px] p-5 border transition-all duration-300 group outline-none",
                       isActive 
                         ? "bg-surface-alt border-border" 
                         : "bg-transparent border-transparent hover:border-border hover:bg-surface-alt"
@@ -345,7 +345,7 @@ export function Features() {
           </div>
 
           {/* RIGHT: PRODUCT UI */}
-          <div className="lg:w-7/12 bg-surface-alt border border-border rounded-[24px] p-6 lg:p-10 shadow-lg relative overflow-hidden flex flex-col">
+          <div className="lg:w-7/12 bg-surface-alt border border-border rounded-[24px] p-5 sm:p-6 lg:p-10 shadow-lg relative overflow-hidden flex flex-col">
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-foreground mb-2">{activeCategory.title}</h3>
               <p className="text-neutral-500">{activeCategory.description}</p>

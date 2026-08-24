@@ -157,7 +157,7 @@ export function Footer() {
               </p>
             ) : (
               <form onSubmit={handleSubscribe} className="mt-4">
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2 xs:flex-row sm:flex-row">
                   <label htmlFor="footer-email" className="sr-only">
                     Email address
                   </label>
@@ -167,7 +167,7 @@ export function Footer() {
                     type="email"
                     required
                     placeholder="you@company.com"
-                    className="bg-surface-alt focus:border-accent-400 focus:ring-[#C8A96B]/20 w-full min-w-0 rounded-full border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-neutral-400 focus:ring-2 focus:outline-none"
+                    className="bg-surface-alt focus:border-accent-400 focus:ring-[#C8A96B]/20 w-full min-w-0 flex-1 rounded-full border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-neutral-400 focus:ring-2 focus:outline-none"
                   />
                   {/* Honeypot field — hidden from real users. */}
                   <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -184,7 +184,7 @@ export function Footer() {
                     type="submit"
                     aria-label="Subscribe"
                     disabled={status === "submitting"}
-                    className="bg-[#315FE8] text-white hover:bg-[#2F5BEA] flex size-10 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-60"
+                    className="bg-[#315FE8] text-white hover:bg-[#2F5BEA] flex h-10 w-full xs:w-10 sm:w-10 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-60"
                   >
                     {status === "submitting" ? (
                       <Loader2 className="size-4 animate-spin" />

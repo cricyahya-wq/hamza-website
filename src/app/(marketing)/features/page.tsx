@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 // Import the specialized features page components
 import { CoreFeaturesGrid } from "./components/CoreFeaturesGrid";
 import { FeatureShowcase } from "./components/FeatureShowcase";
+import { CallCenterGallery } from "./components/CallCenterGallery";
 import { IntegrationsGrid } from "./components/IntegrationsGrid";
 import { SecurityReliability } from "./components/SecurityReliability";
 import { WhyChoose } from "./components/WhyChoose";
@@ -74,6 +75,13 @@ export default function FeaturesPage() {
         <div className="mt-20">
           <FeatureShowcase />
         </div>
+      </Section>
+
+      {/* 3.5. CALL CENTER PHOTO GALLERY */}
+      <Section className="bg-background relative border-t border-border">
+        <Container>
+          <CallCenterGallery />
+        </Container>
       </Section>
 
       {/* 4. INTEGRATIONS */}

@@ -80,7 +80,7 @@ export function Hero() {
           </m.div>
         </div>
 
-        <div className="relative min-w-0 w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-[600px] flex items-center justify-center lg:justify-end">
+        <div className="relative min-w-0 w-full aspect-[4/3] sm:aspect-[4/3] lg:aspect-auto lg:h-[600px] flex items-center justify-center lg:justify-end">
           <m.div 
             initial={{ opacity: 0, scale: 0.98, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
