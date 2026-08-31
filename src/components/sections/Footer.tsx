@@ -97,7 +97,7 @@ export function Footer() {
               className="flex items-center gap-3 transition-opacity hover:opacity-85"
             >
               <Image
-                src="/images/moose-logo-transparent-hd.png"
+                src="/images/custom-logo.png"
                 alt="MoosePBX logo"
                 width={56}
                 height={56}

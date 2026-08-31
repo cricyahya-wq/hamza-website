@@ -165,7 +165,7 @@ export function Navbar() {
             onClick={(e) => handleNavClick(e, "/")}
           >
             <Image
-              src="/images/moose-logo-transparent-hd.png"
+              src="/images/custom-logo.png"
               alt="MoosePBX logo"
               width={48}
               height={48}
