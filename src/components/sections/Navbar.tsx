@@ -165,11 +165,11 @@ export function Navbar() {
             onClick={(e) => handleNavClick(e, "/")}
           >
             <Image
-              src="/images/moose-icon-clean.png"
-              alt="MoosePBX icon"
-              width={36}
-              height={36}
-              className="h-8 w-auto sm:h-9 shrink-0 brightness-0 invert [.light_&]:invert-0 transition-all duration-350"
+              src="/images/moosepbx-logo.png"
+              alt="MoosePBX logo"
+              width={40}
+              height={40}
+              className="h-9 w-auto sm:h-10 shrink-0 rounded-lg transition-all duration-300"
               priority
             />
             <span className="font-display text-lg sm:text-xl font-bold tracking-tight text-foreground">
