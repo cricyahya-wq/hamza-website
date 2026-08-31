@@ -161,18 +161,18 @@ export function Navbar() {
         <nav className="flex h-[72px] sm:h-[88px] items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-3 transition-opacity hover:opacity-80"
+            className="flex items-center gap-3 transition-opacity hover:opacity-85"
             onClick={(e) => handleNavClick(e, "/")}
           >
             <Image
-              src="/images/moosepbx-logo.png"
+              src="/images/moose-logo-transparent-hd.png"
               alt="MoosePBX logo"
-              width={40}
-              height={40}
-              className="h-9 w-auto sm:h-10 shrink-0 rounded-lg transition-all duration-300"
+              width={48}
+              height={48}
+              className="h-10 w-auto sm:h-12 shrink-0 transition-transform duration-200 hover:scale-105"
               priority
             />
-            <span className="font-display text-lg sm:text-xl font-bold tracking-tight text-foreground">
+            <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground">
               MoosePBX
             </span>
           </Link>

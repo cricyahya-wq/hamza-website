@@ -94,15 +94,18 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link
               href="/"
-              className="flex items-center"
+              className="flex items-center gap-3 transition-opacity hover:opacity-85"
             >
               <Image
-                src="/images/moosepbx-logo.png"
+                src="/images/moose-logo-transparent-hd.png"
                 alt="MoosePBX logo"
-                width={160}
-                height={160}
-                className="h-20 w-auto rounded-xl"
+                width={56}
+                height={56}
+                className="h-12 w-auto shrink-0"
               />
+              <span className="font-display text-2xl font-bold tracking-tight text-foreground">
+                MoosePBX
+              </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-500">
               {siteConfig.mission}
