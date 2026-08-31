@@ -14,7 +14,7 @@ const HeroDialerVisual = dynamic(
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 bg-background min-h-[90vh] flex items-center border-b border-border">
+    <section id="hero" className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 bg-background min-h-[90vh] flex items-center border-b border-border scroll-mt-24">
       <Container className="relative z-10 grid items-center gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-w-[1400px]">
         <div className="min-w-0 flex flex-col items-start lg:pr-8">
           <m.div
@@ -57,7 +57,7 @@ export function Hero() {
               Get a live demo
               <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Button>
-            <Button href="#products" variant="outline-dark" size="lg" className="w-full sm:w-auto justify-center transition-all hover:border-foreground/40">
+            <Button href="#features" variant="outline-dark" size="lg" className="w-full sm:w-auto justify-center transition-all hover:border-foreground/40">
               See how it works
             </Button>
           </m.div>

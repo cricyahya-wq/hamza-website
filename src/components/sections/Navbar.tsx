@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,13 +16,82 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const [activeHref, setActiveHref] = useState<string>(pathname);
+
+  // Determine the active navigation link based on scroll position (on home) or pathname (on sub-pages)
+  const updateActiveSection = useCallback(() => {
+    setScrolled(window.scrollY > 10);
+
+    if (pathname !== "/") {
+      if (pathname.startsWith("/solutions")) {
+        setActiveHref("/solutions");
+      } else if (pathname.startsWith("/features")) {
+        setActiveHref("/features");
+      } else if (pathname.startsWith("/pricing")) {
+        setActiveHref("/pricing");
+      } else if (pathname.startsWith("/industries")) {
+        setActiveHref("/industries");
+      } else if (pathname.startsWith("/blog")) {
+        setActiveHref("/blog");
+      } else if (pathname.startsWith("/services")) {
+        setActiveHref("/#services");
+      } else {
+        setActiveHref(pathname);
+      }
+      return;
+    }
+
+    // When on homepage ("/")
+    if (window.scrollY < 200) {
+      setActiveHref("/");
+      return;
+    }
+
+    // Sections on the homepage in top-to-bottom order
+    const sections = [
+      { id: "features", href: "/features" },
+      { id: "services", href: "/#services" },
+      { id: "products", href: "/solutions" },
+    ];
+
+    let current = "/";
+    for (const sec of sections) {
+      const el = document.getElementById(sec.id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        // If the top of the section has reached the upper area of the viewport
+        if (rect.top <= 240) {
+          current = sec.href;
+        }
+      }
+    }
+
+    setActiveHref(current);
+  }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [updateActiveSection]);
+
+  // Handle hash on initial mount or page navigation
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        const timer = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -30,6 +99,30 @@ export function Navbar() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    setMobileOpen(false);
+
+    if (pathname === "/") {
+      if (href === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveHref("/");
+        window.history.pushState(null, "", "/");
+      } else if (href === "/#services") {
+        const el = document.getElementById("services");
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+          setActiveHref("/#services");
+          window.history.pushState(null, "", "/#services");
+        }
+      }
+    }
+  };
 
   return (
     <m.header
@@ -49,7 +142,7 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-3 transition-opacity hover:opacity-80"
-            onClick={() => setMobileOpen(false)}
+            onClick={(e) => handleNavClick(e, "/")}
           >
             <Image
               src="/images/moose-icon-clean.png"
@@ -66,14 +159,15 @@ export function Navbar() {
 
           <div className="hidden items-center md:flex md:gap-5 lg:gap-10">
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = activeHref === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
                     "relative text-sm lg:text-[15px] font-medium transition-colors hover:text-accent-400 py-2 whitespace-nowrap",
-                    isActive ? "text-accent-400" : "text-neutral-500"
+                    isActive ? "text-accent-400 font-semibold" : "text-neutral-500"
                   )}
                 >
                   {item.label}
@@ -125,18 +219,21 @@ export function Navbar() {
           >
             <Container className="flex flex-col gap-2 py-6">
               {navigation.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = activeHref === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className={cn(
-                      "rounded-lg px-4 py-3 text-base font-medium hover:bg-neutral-500/10 hover:text-accent-400 transition-colors",
-                      isActive ? "text-accent-400 bg-neutral-500/10" : "text-foreground"
+                      "rounded-lg px-4 py-3 text-base font-medium hover:bg-neutral-500/10 hover:text-accent-400 transition-colors flex items-center justify-between",
+                      isActive ? "text-accent-400 bg-neutral-500/10 font-semibold" : "text-foreground"
                     )}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="h-2 w-2 rounded-full bg-accent-400" />
+                    )}
                   </Link>
                 );
               })}

@@ -10,5 +10,5 @@ interface SectionProps extends ComponentPropsWithoutRef<"section"> {
 export function Section({ as = "section", className, ...props }: SectionProps) {
   const Component = as;
 
-  return <Component className={cn("py-20 sm:py-28", className)} {...props} />;
+  return <Component className={cn("py-20 sm:py-28 scroll-mt-24", className)} {...props} />;
 }

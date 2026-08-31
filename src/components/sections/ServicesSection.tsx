@@ -281,9 +281,30 @@ const services: ServiceCategory[] = [
     description: "Bring intelligent automation to your communication workflows with custom AI bots and voice agents.",
     cta: "Explore AI Solutions",
     tags: [
-      createGenericDetail("AI Bot Integration"),
-      createGenericDetail("Custom AI Bot Integration"),
-      createGenericDetail("AI Voice Agent")
+      {
+        id: "ai-bot",
+        title: "AI Bot Integration",
+        overview: "Deploy intelligent, omnichannel AI bots across voice, chat, and messaging to resolve customer inquiries instantly and automate repetitive workflows.",
+        features: ["Omnichannel Deployment", "CRM & API Integration", "Intent & Sentiment Analysis", "Smart Human Handoff", "Vector Knowledge Base", "Automated Ticket Resolution"],
+        benefits: "Resolves up to 70% of common customer questions automatically, delivers 24/7 instant support, and drastically reduces operational costs.",
+        idealFor: "Support teams, eCommerce brands, SaaS companies, and high-volume customer service desks."
+      },
+      {
+        id: "ai-voice-agent",
+        title: "AI Voice Agent",
+        overview: "Autonomous conversational AI voice agents capable of conducting natural, bidirectional phone conversations, qualifying leads, and booking appointments 24/7.",
+        features: ["Sub-500ms Latency", "Neural Voice Synthesis", "Real-Time Barge-in", "Live Supervision & Takeover", "CRM Auto-Logging", "Multi-Turn Context"],
+        benefits: "Enables 10x calling capacity with zero wait times, cuts cost per call by 80%, and eliminates repetitive agent burnout.",
+        idealFor: "Outbound sales teams, customer service centers, medical appointment desks, and emergency dispatch operations."
+      },
+      {
+        id: "custom-ai-workflows",
+        title: "Custom AI Workflows",
+        overview: "Bespoke AI automation workflows engineered around your company's proprietary databases, internal tools, and specialized telephony logic.",
+        features: ["Custom LLM Fine-Tuning", "Automated Workflows", "API & Webhook Triggers", "Compliance Guardrails", "Advanced Analytics", "Data Privacy Controls"],
+        benefits: "Automates complex multi-step processes, reduces human error, and delivers bespoke intelligence tailored to your industry.",
+        idealFor: "Enterprises with custom internal systems, healthcare organizations, and financial service firms."
+      }
     ],
     visual: <AIVisual />
   },
@@ -336,7 +357,7 @@ export function ServicesSection() {
 
   return (
     <>
-      <section id="services" className="bg-background pt-24 pb-32 sm:pt-32 sm:pb-40 relative overflow-hidden border-b border-border">
+      <section id="services" className="bg-background pt-24 pb-32 sm:pt-32 sm:pb-40 relative overflow-hidden border-b border-border scroll-mt-24">
         
         <Container className="relative z-10 max-w-[1280px]">
           {/* Header */}
@@ -540,6 +561,22 @@ const getFeatureDescription = (featureName: string) => {
     "Custom Applications": "Embed powerful voice and video capabilities directly into your own proprietary software.",
     "Real-Time Events": "Synchronize metadata, chat messages, and application state instantly alongside your streams.",
 
+    // AI Bot & AI Voice Agent
+    "Omnichannel Deployment": "Deploy unified AI bots across voice, SMS, web chat, WhatsApp, and email with synchronized customer context.",
+    "CRM & API Integration": "Connect directly into Salesforce, HubSpot, Zendesk, and custom internal APIs for real-time customer data lookups.",
+    "Intent & Sentiment Analysis": "Analyze real-time caller emotions, tones, and intent to adapt responses dynamically and flag escalations.",
+    "Smart Human Handoff": "Seamlessly transfer complex conversations to live human agents with comprehensive call summaries and notes.",
+    "Vector Knowledge Base": "Empower your bots with private company documentation and knowledge bases via secure Retrieval-Augmented Generation (RAG).",
+    "Automated Ticket Resolution": "Automatically resolve routine support inquiries, reset passwords, update orders, and close tickets without human intervention.",
+    "Sub-500ms Latency": "Ultra-low latency speech-to-speech engine ensuring fluid, natural turn-taking with no unnatural conversational pauses.",
+    "Neural Voice Synthesis": "Hyper-realistic voice models with human-like intonation, dynamic emotional pacing, and natural breathing.",
+    "Real-Time Barge-in": "Instantly interrupts AI speech the exact moment the human speaks, providing a truly natural conversational flow.",
+    "Live Supervision & Takeover": "Monitor active AI calls in real time with live audio streaming, live transcription, and one-click agent takeover.",
+    "CRM Auto-Logging": "Automatically log complete call audio, full text transcripts, call disposition codes, and extracted data points into your CRM.",
+    "Multi-Turn Context": "Retain context across complex multi-turn dialogs and previous customer interactions for truly personalized assistance.",
+    "Custom LLM Fine-Tuning": "Fine-tune models on your company's domain-specific vocabulary, compliance rules, and standard operating procedures.",
+    "Compliance Guardrails": "Enforce strict safety boundaries, prevent hallucinations, and ensure regulatory compliance on every conversation.",
+
     // General
     "Custom Configuration": "Tailor the system settings, limits, and behaviors exactly to your operational needs.",
     "Secure Integration": "Connect with your existing infrastructure using secure, authenticated, and encrypted channels.",
@@ -606,6 +643,20 @@ const getBusinessImpacts = (id: string) => {
         { title: "Modern Architecture", desc: "Build on a robust WebRTC foundation designed for the future." },
         { title: "Global Edge Network", desc: "Connect users automatically to the nearest optimized server." },
         { title: "Developer Velocity", desc: "Integrate powerful communication SDKs in hours, not months." },
+      ];
+    case 'ai-bot':
+      return [
+        { title: "70% Auto-Resolution", desc: "Instantly resolve routine customer questions without human support." },
+        { title: "24/7 Availability", desc: "Never miss an incoming customer inquiry or lead at any time." },
+        { title: "CRM Sync", desc: "Automatically log all conversation context and customer details." },
+        { title: "Infinite Scaling", desc: "Handle peak inquiry spikes without adding support headcount." },
+      ];
+    case 'ai-voice-agent':
+      return [
+        { title: "Natural Voice", desc: "Hyper-realistic neural voice synthesis with sub-500ms response time." },
+        { title: "80% Cost Reduction", desc: "Dramatically lower cost per call compared to traditional staffing." },
+        { title: "Autonomous Booking", desc: "Qualify inbound/outbound leads and schedule meetings instantly." },
+        { title: "Real-Time Takeover", desc: "Seamlessly transfer calls to human agents with full context." },
       ];
     default:
       return [

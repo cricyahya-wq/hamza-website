@@ -11,7 +11,10 @@ import {
   Activity,
   Cloud,
   Network,
-  Database
+  Database,
+  Bot,
+  Mic,
+  MessageSquare
 } from "lucide-react";
 
 export interface ServiceDetail {
@@ -266,6 +269,87 @@ export const servicesData: ServiceDetail[] = [
       { question: "Do you offer ongoing support?", answer: "Yes, we provide 24/7 monitoring, management, and emergency support for all custom Kamailio deployments." },
     ],
     related_services: ["proxy-server", "asterisk-free-switch"]
+  },
+  {
+    slug: "ai-bot",
+    title: "AI Bot Integration",
+    subtitle: "Intelligent conversational bots for customer support, lead qualification, and automated CRM workflows.",
+    description: "Deploy intelligent, self-learning AI bots across voice, chat, and messaging to resolve customer inquiries instantly and automate repetitive workflows.",
+    long_description: "Supercharge your support and sales operations with MoosePBX AI Bot Solutions. Our custom AI bots seamlessly integrate with your existing PBX, CRMs, helpdesks, and messaging channels to provide 24/7 autonomous support. Powered by state-of-the-art Large Language Models (LLMs) and natural language understanding (NLU), MoosePBX AI Bots understand context, retrieve live customer records, answer complex queries, and hand off seamlessly to human agents when required.",
+    image: "/images/feature-ai-analytics.jpg",
+    icon: Bot,
+    features: [
+      { title: "Omnichannel Deployment", description: "Deploy unified AI bots across voice, SMS, web chat, WhatsApp, and email with shared context.", icon: MessageSquare },
+      { title: "CRM & API Integration", description: "Connect directly into Salesforce, HubSpot, Zendesk, and custom REST APIs for real-time data sync.", icon: Database },
+      { title: "Intent & Sentiment Analysis", description: "Real-time emotion and intent detection to dynamically adapt response tone and escalation priority.", icon: Activity },
+      { title: "Smart Human Handoff", description: "Seamlessly route complex conversations to human agents with full conversation summaries.", icon: Network },
+    ],
+    benefits: [
+      { title: "70% First-Contact Resolution", description: "Resolve common customer queries, FAQs, and ticket updates automatically without human intervention." },
+      { title: "24/7 Instant Availability", description: "Never miss a customer inquiry or lead with around-the-clock instant automated responses." },
+      { title: "Massive Cost Efficiency", description: "Scale your customer service capacity infinitely without linear increases in headcount or operational expenses." },
+    ],
+    use_cases: [
+      { title: "Tier-1 Support Automation", description: "Handle password resets, order tracking, appointment scheduling, and account inquiries instantly." },
+      { title: "Inbound Lead Qualification", description: "Engage website and inbound callers, qualify prospects based on custom criteria, and book sales meetings." },
+    ],
+    technical_specs: [
+      { label: "Model Architecture", value: "Custom Fine-Tuned LLMs / OpenAI / Anthropic" },
+      { label: "Response Time", value: "< 200ms Token Generation" },
+      { label: "Knowledge Base", value: "Vector RAG (Pinecone / Pgvector / Qdrant)" },
+      { label: "Integration Protocols", value: "REST API, Webhooks, WebSockets, SIP" },
+    ],
+    why_choose: [
+      { title: "Enterprise-Grade Security", description: "SOC 2, GDPR, and HIPAA compliant data handling with zero training on your private customer conversations." },
+      { title: "Custom Business Logic", description: "We tailor bot workflows, guardrails, and knowledge bases to your exact operational procedures." },
+    ],
+    faq: [
+      { question: "How does the AI bot connect to my PBX?", answer: "Our AI bots integrate natively via SIP trunking, WebRTC, and REST APIs, enabling voice bot calls alongside text chat." },
+      { question: "Can the bot access our private documentation?", answer: "Yes, we implement Retrieval-Augmented Generation (RAG) to securely index your company knowledge base, manuals, and FAQs." },
+      { question: "What happens when the bot cannot answer?", answer: "The bot automatically flags the interaction and performs a warm transfer to an available agent with a full summary." },
+    ],
+    related_services: ["ai-voice-agent", "voip-solutions", "voice-dialer"]
+  },
+  {
+    slug: "ai-voice-agent",
+    title: "AI Voice Agent",
+    subtitle: "Ultra-low latency conversational AI voice agents that sound and interact like human experts.",
+    description: "Autonomous AI voice agents capable of conducting natural, bidirectional phone conversations, qualifying leads, and booking appointments 24/7.",
+    long_description: "Revolutionize your call center operations with MoosePBX Autonomous AI Voice Agents. Powered by ultra-low latency voice streaming, neural speech synthesis, and real-time speech-to-speech models, our AI voice agents deliver natural, responsive conversations that feel indistinguishable from human agents. They handle inbound support calls, execute outbound verification and reminder campaigns, collect payments, and update your backend systems in real time.",
+    image: "/images/feature-ai-analytics.jpg",
+    icon: Mic,
+    features: [
+      { title: "Sub-500ms Voice Latency", description: "Ultra-fast voice turn-taking and natural barge-in handling so conversations flow seamlessly without awkward delays.", icon: Zap },
+      { title: "Human-Quality Voice Synthesis", description: "Hyper-realistic voice models with dynamic emotional inflection, breathing pauses, and natural cadence.", icon: Headphones },
+      { title: "Autonomous Call Execution", description: "Handle complete call workflows from greeting and identity verification to resolution and CRM logging.", icon: Phone },
+      { title: "Live Call Supervision", description: "Monitor live AI conversations, view real-time transcripts, and intervene with agent takeovers anytime.", icon: Activity },
+    ],
+    benefits: [
+      { title: "10x Outbound & Inbound Capacity", description: "Simultaneously handle thousands of concurrent voice conversations without queue wait times." },
+      { title: "80% Reduction in Cost Per Call", description: "Dramatically reduce operational call costs while delivering consistent, high-quality customer service." },
+      { title: "Zero Agent Burnout", description: "Free your human representatives from monotonous repetitive calls so they can focus on high-value conversations." },
+    ],
+    use_cases: [
+      { title: "Outbound Lead Outreach & Booking", description: "Instantly follow up with newly submitted web leads via phone to qualify and schedule sales consultations." },
+      { title: "Customer Support & Dispatch", description: "Answer customer inquiries, handle emergency dispatches, and process service requests around the clock." },
+      { title: "Appointment Confirmations & Reminders", description: "Automate outbound confirmation calls with interactive rescheduling and calendar sync." },
+    ],
+    technical_specs: [
+      { label: "Speech-to-Speech Latency", value: "< 450ms End-to-End" },
+      { label: "Voice Engine", value: "Neural TTS & Real-Time ASR (ElevenLabs / Deepgram / Whisper)" },
+      { label: "Telephony Protocol", value: "SIP, WebRTC, RTP over TLS" },
+      { label: "Concurrent Call Capacity", value: "10,000+ Concurrent AI Channels" },
+    ],
+    why_choose: [
+      { title: "True Conversational Fluidity", description: "Our agents support active listening, interruption handling (barge-in), and contextual memory across calls." },
+      { title: "Turnkey Telephony Integration", description: "Native compatibility with Asterisk, FreeSWITCH, Kamailio, and all major SIP carriers." },
+    ],
+    faq: [
+      { question: "Can customers interrupt the AI voice agent while it speaks?", answer: "Yes! Our system features real-time barge-in detection. The moment the caller speaks, the AI stops talking and listens." },
+      { question: "How realistic are the voices?", answer: "We utilize advanced neural speech synthesis models that replicate human inflection, pacing, and tone with remarkable realism." },
+      { question: "Can the AI voice agent transfer calls to my human agents?", answer: "Yes, the AI voice agent can initiate warm or blind SIP transfers to any queue or agent extension with a complete summary." },
+    ],
+    related_services: ["ai-bot", "voip-solutions", "voice-dialer"]
   }
 ];
 

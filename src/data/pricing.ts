@@ -3,11 +3,11 @@ import type { PricingPlan } from "@/types";
 export const pricingPlans: PricingPlan[] = [
   {
     name: "Starter",
-    price: "$29",
-    period: "/user/month",
+    price: "$39",
+    period: "/month",
     description: "For small teams getting off legacy phone systems.",
     features: [
-      "Up to 10 agent seats",
+      "Up to 10 Agents",
       "Cloud PBX & unlimited extensions",
       "Basic call routing & IVR",
       "Call recording (30-day retention)",
@@ -18,11 +18,11 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     name: "Growth",
-    price: "$59",
-    period: "/user/month",
+    price: "$99",
+    period: "/month",
     description: "For growing support and sales teams that need real insight.",
     features: [
-      "Up to 100 agent seats",
+      "Up to 50 Agents",
       "Skills-based routing & live queue monitoring",
       "Real-time analytics dashboards",
       "CRM & helpdesk integrations",
