@@ -7,7 +7,7 @@ import { SmoothScrollProvider } from "./SmoothScrollProvider";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <LazyMotion features={domAnimation}>
         <SmoothScrollProvider>
           {children}
