@@ -101,7 +101,7 @@ export function Footer() {
                 alt="MoosePBX logo"
                 width={56}
                 height={56}
-                className="h-12 w-auto shrink-0"
+                className="theme-logo h-12 w-auto shrink-0 transition-transform duration-200"
               />
               <span className="font-display text-2xl font-bold tracking-tight text-foreground">
                 MoosePBX

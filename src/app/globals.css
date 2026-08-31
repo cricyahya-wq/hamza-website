@@ -236,4 +236,15 @@
     transition-duration: 350ms;
     transition-timing-function: ease;
   }
+
+  /* Adaptive logo for Dark & Light modes */
+  .theme-logo {
+    filter: brightness(0) invert(1);
+    transition: filter 350ms ease, transform 200ms ease;
+  }
+
+  .light .theme-logo,
+  html.light .theme-logo {
+    filter: brightness(1) invert(0);
+  }
 }
