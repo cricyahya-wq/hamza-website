@@ -9,7 +9,7 @@ export const siteConfig: SiteConfig = {
     "MoosePBX delivers advanced call center and VoIP solutions that cut operational costs, maximize efficiency, and drive business growth.",
   // Set NEXT_PUBLIC_SITE_URL in your production environment before deploying.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  email: "info.moosepbx@gmail.com",
+  email: "info@moosepbx.com",
   links: {
     linkedin: "https://www.linkedin.com/company/moosepbx/posts/?feedView=all",
     facebook: "#",

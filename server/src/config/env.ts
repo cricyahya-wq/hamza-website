@@ -36,7 +36,7 @@ const envSchema = z.object({
   SMTP_PASS: z.string().min(1, "SMTP_PASS is required"),
 
   MAIL_FROM: z.string().min(1, "MAIL_FROM is required"),
-  CONTACT_INBOX: z.string().email().default("info.moosepbx@gmail.com"),
+  CONTACT_INBOX: z.string().email().default("info@moosepbx.com"),
 
   UNSUBSCRIBE_SECRET: z
     .string()

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const TO_EMAIL = "info.moosepbx@gmail.com";
+const TO_EMAIL = "info@moosepbx.com";
 const FROM_EMAIL = "MoosePBX Contact <onboarding@resend.dev>";
 
 // Simple spam checks
