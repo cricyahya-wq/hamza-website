@@ -34,6 +34,9 @@ export function Modal({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     dialogRef.current?.focus();
     document.body.style.overflow = "hidden";
+    if (typeof window !== "undefined" && window.__lenis) {
+      window.__lenis.stop();
+    }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -43,6 +46,9 @@ export function Modal({
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
       previouslyFocused?.focus();
     };
   }, [open, onClose]);

@@ -44,10 +44,11 @@ import { siteConfig } from "@/config/site";
 import { subscribeNewsletter, ApiError } from "@/lib/api";
 
 const productLinks = [
-  { label: "Features", href: "/features" },
+  { label: "Services", href: "/#services" },
   { label: "Solutions", href: "/solutions" },
   { label: "Pricing", href: "/pricing" },
   { label: "Industries", href: "/industries" },
+  { label: "Features", href: "/features" },
 ];
 
 const companyLinks = [

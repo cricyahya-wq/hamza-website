@@ -349,10 +349,21 @@ export function ServicesSection() {
   useEffect(() => {
     if (selectedFeature) {
       document.body.style.overflow = "hidden";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.stop();
+      }
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
     }
-    return () => { document.body.style.overflow = "unset"; };
+    return () => {
+      document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
+    };
   }, [selectedFeature]);
 
   return (

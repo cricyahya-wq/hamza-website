@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/data/navigation";
+import { smoothScrollTo } from "@/hooks/useLenis";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,16 +24,16 @@ export function Navbar() {
     setScrolled(window.scrollY > 10);
 
     if (pathname !== "/") {
-      if (pathname.startsWith("/solutions")) {
-        setActiveHref("/solutions");
-      } else if (pathname.startsWith("/features")) {
-        setActiveHref("/features");
+      if (pathname.startsWith("/features")) {
+        setActiveHref("/#features");
+      } else if (pathname.startsWith("/solutions")) {
+        setActiveHref("/#solutions");
       } else if (pathname.startsWith("/pricing")) {
-        setActiveHref("/pricing");
+        setActiveHref("/#pricing");
       } else if (pathname.startsWith("/industries")) {
-        setActiveHref("/industries");
+        setActiveHref("/#industries");
       } else if (pathname.startsWith("/blog")) {
-        setActiveHref("/blog");
+        setActiveHref("/#blog");
       } else if (pathname.startsWith("/services")) {
         setActiveHref("/#services");
       } else {
@@ -47,11 +48,15 @@ export function Navbar() {
       return;
     }
 
-    // Sections on the homepage in top-to-bottom order
+    // Sections on the homepage in exact top-to-bottom order: Home, Services, Features, Solutions, Pricing, Industries, Blog
     const sections = [
-      { id: "features", href: "/features" },
+      { id: "hero", href: "/" },
       { id: "services", href: "/#services" },
-      { id: "products", href: "/solutions" },
+      { id: "features", href: "/#features" },
+      { id: "solutions", href: "/#solutions" },
+      { id: "pricing", href: "/#pricing" },
+      { id: "industries", href: "/#industries" },
+      { id: "blog", href: "/#blog" },
     ];
 
     let current = "/";
@@ -60,7 +65,7 @@ export function Navbar() {
       if (el) {
         const rect = el.getBoundingClientRect();
         // If the top of the section has reached the upper area of the viewport
-        if (rect.top <= 240) {
+        if (rect.top <= 260) {
           current = sec.href;
         }
       }
@@ -86,17 +91,30 @@ export function Navbar() {
       const el = document.getElementById(id);
       if (el) {
         const timer = setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth" });
-        }, 150);
+          smoothScrollTo(el, -80);
+        }, 180);
         return () => clearTimeout(timer);
       }
     }
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.stop();
+      }
+    } else {
+      document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
+    }
     return () => {
       document.body.style.overflow = "";
+      if (typeof window !== "undefined" && window.__lenis) {
+        window.__lenis.start();
+      }
     };
   }, [mobileOpen]);
 
@@ -109,16 +127,18 @@ export function Navbar() {
     if (pathname === "/") {
       if (href === "/") {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        smoothScrollTo(0);
         setActiveHref("/");
         window.history.pushState(null, "", "/");
-      } else if (href === "/#services") {
-        const el = document.getElementById("services");
+      } else if (href.startsWith("/#") || href.startsWith("#")) {
+        const targetId = href.replace("/#", "").replace("#", "");
+        const el = document.getElementById(targetId);
         if (el) {
           e.preventDefault();
-          el.scrollIntoView({ behavior: "smooth" });
-          setActiveHref("/#services");
-          window.history.pushState(null, "", "/#services");
+          smoothScrollTo(el, -80);
+          const fullHref = href.startsWith("/") ? href : `/${href}`;
+          setActiveHref(fullHref);
+          window.history.pushState(null, "", fullHref);
         }
       }
     }
@@ -157,7 +177,7 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden items-center md:flex md:gap-5 lg:gap-10">
+          <div className="hidden items-center md:flex md:gap-5 lg:gap-8">
             {navigation.map((item) => {
               const isActive = activeHref === item.href;
               return (

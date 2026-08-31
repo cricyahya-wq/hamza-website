@@ -301,7 +301,7 @@ export function Features() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 min-h-[600px] lg:min-h-[500px]">
           
           {/* LEFT: FEATURE MENU */}
-          <div className="lg:w-5/12 flex flex-col gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x scrollbar-hide">
+          <div className="lg:w-5/12 flex flex-col gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 scrollbar-hide touch-pan-y overscroll-x-contain">
             <div className="flex lg:flex-col gap-3 min-w-max lg:min-w-0 px-1">
               {featureCategories.map((category) => {
                 const isActive = activeTab === category.id;
