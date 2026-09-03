@@ -4,8 +4,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "info@moosepbx.com";
-const BACKUP_TO_EMAIL = "info.moosepbx@gmail.com";
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "MoosePBX Contact <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "MoosePBX Contact <contact@moosepbx.com>";
 
 // Save backup copy locally so leads are never lost even during external API downtime
 async function recordBackupSubmission(data: {
@@ -48,9 +47,8 @@ function buildEmailHtml(params: {
   email: string;
   company?: string;
   message: string;
-  note?: string;
 }) {
-  const { name, email, company, message, note } = params;
+  const { name, email, company, message } = params;
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #0B0D10; color: #F5F5F2; border-radius: 12px; overflow: hidden; border: 1px solid #2A3038;">
       
@@ -63,14 +61,6 @@ function buildEmailHtml(params: {
           Someone reached out via moosepbx.com
         </p>
       </div>
-
-      ${
-        note
-          ? `<div style="background: #1e293b; border-bottom: 1px solid #334155; padding: 12px 40px; font-size: 12px; color: #93c5fd;">
-               ℹ️ ${note}
-             </div>`
-          : ""
-      }
 
       <!-- Body -->
       <div style="padding: 32px 40px;">
@@ -154,8 +144,8 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
     const subject = `New Contact Form Submission — ${name}${company ? ` (${company})` : ""}`;
 
-    // Attempt sending to primary recipient
-    let sendResult = await resend.emails.send({
+    // Send directly to info@moosepbx.com
+    const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
@@ -163,29 +153,8 @@ export async function POST(request: Request) {
       html: buildEmailHtml({ name, email, company, message }),
     });
 
-    // If Resend rejected sending to TO_EMAIL due to unverified domain sandbox restrictions,
-    // fallback immediately to the verified account owner email (BACKUP_TO_EMAIL).
-    if (sendResult.error && TO_EMAIL !== BACKUP_TO_EMAIL) {
-      console.warn(
-        `Resend primary send to ${TO_EMAIL} failed (${sendResult.error.message}). Retrying with backup recipient (${BACKUP_TO_EMAIL})...`
-      );
-      sendResult = await resend.emails.send({
-        from: FROM_EMAIL,
-        to: BACKUP_TO_EMAIL,
-        replyTo: email,
-        subject: `[Contact Form] ${name}${company ? ` (${company})` : ""}`,
-        html: buildEmailHtml({
-          name,
-          email,
-          company,
-          message,
-          note: `Delivered to backup address (${BACKUP_TO_EMAIL}) because domain verification for ${TO_EMAIL} is pending.`,
-        }),
-      });
-    }
-
-    if (sendResult.error) {
-      console.error("Resend error after fallback:", sendResult.error);
+    if (error) {
+      console.error("Resend error sending to info@moosepbx.com:", error);
       return NextResponse.json(
         { error: { message: "Failed to send email. Please try again." } },
         { status: 500 }
@@ -193,7 +162,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { message: "Message sent successfully.", id: sendResult.data?.id || crypto.randomUUID() },
+      { message: "Message sent successfully.", id: data?.id || crypto.randomUUID() },
       { status: 200 }
     );
   } catch (err) {
