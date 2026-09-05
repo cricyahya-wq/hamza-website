@@ -58,7 +58,7 @@ export function Modal({
   return createPortal(
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div data-lenis-prevent className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,6 +70,7 @@ export function Modal({
           />
           <m.div
             ref={dialogRef}
+            data-lenis-prevent
             role="dialog"
             aria-modal="true"
             aria-label={title}
@@ -79,7 +80,7 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className={cn(
-              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-foreground/5 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl outline-none sm:p-8",
+              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-foreground/5 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl outline-none sm:p-8 max-h-[90vh] overflow-y-auto overscroll-contain",
               className,
             )}
           >

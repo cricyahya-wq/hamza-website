@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { m, useInView, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Shield, X, Code2, Users, GitBranch, Phone, List, Mic, Activity, BarChart, Database, PhoneCall, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Shield, X, Code2, Users, GitBranch, Phone, List, Mic, Activity, BarChart, Database, PhoneCall, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
 
@@ -471,6 +472,7 @@ export function ServicesSection() {
         {selectedFeature && (
           <FeatureDetailPopup
             feature={selectedFeature}
+            category={services.find((s) => s.tags.some((t) => t.id === selectedFeature.id))}
             onClose={() => setSelectedFeature(null)}
           />
         )}
@@ -483,6 +485,7 @@ export function ServicesSection() {
 
 type FeatureDetailPopupProps = {
   feature: SubServiceDetail;
+  category?: ServiceCategory;
   onClose: () => void;
 };
 
@@ -709,10 +712,26 @@ function SystemVisual({ title }: { title: string }) {
   );
 }
 
-function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
+function FeatureDetailPopup({ feature, category, onClose }: FeatureDetailPopupProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <>
       <style>{`
+        .custom-popup-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(150, 150, 150, 0.3) transparent;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-y;
+        }
         .custom-popup-scrollbar::-webkit-scrollbar {
           width: 6px;
         }
@@ -720,15 +739,22 @@ function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
           background: transparent;
         }
         .custom-popup-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(150, 150, 150, 0.2);
+          background-color: rgba(150, 150, 150, 0.3);
           border-radius: 10px;
         }
         .custom-popup-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(150, 150, 150, 0.4);
+          background-color: rgba(150, 150, 150, 0.5);
         }
-        /* Dark mode subtle adjust if needed, but the rgba fits both */
       `}</style>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      <div 
+        data-lenis-prevent
+        className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 lg:p-8 overscroll-contain"
+        onWheel={(e) => {
+          if (scrollRef.current && !scrollRef.current.contains(e.target as Node)) {
+            scrollRef.current.scrollTop += e.deltaY;
+          }
+        }}
+      >
         {/* Dimming overlay */}
         <m.div
           initial={{ opacity: 0 }}
@@ -740,24 +766,24 @@ function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
         />
 
         <m.div
+          data-lenis-prevent
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative z-20 w-full sm:max-w-4xl lg:w-[960px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh]"
-          style={{ display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr) auto' }}
+          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:w-[960px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh] overscroll-contain"
         >
           {/* Header */}
-          <div className="flex items-start justify-between border-b border-border px-6 py-5 md:px-10 md:py-8 bg-card relative">
+          <div className="flex-shrink-0 flex items-start justify-between border-b border-border px-6 py-5 md:px-10 md:py-8 bg-card relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#315FE8] to-transparent opacity-50" />
             
             <div className="pr-8">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[10px] font-bold tracking-[0.2em] text-accent-500 uppercase">
-                  01 / VOIP SOLUTIONS
+                  {category ? `${category.number} / ${category.categoryName}` : "01 / VOIP SOLUTIONS"}
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-[#315FE8]/10 text-[#315FE8] text-[9px] font-bold tracking-widest uppercase border border-[#315FE8]/20">
-                  VOIP SOLUTION
+                  {category ? category.title.toUpperCase() : "VOIP SOLUTION"}
                 </span>
               </div>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
@@ -770,7 +796,7 @@ function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
             
             <button
               onClick={onClose}
-              className="p-2.5 rounded-full bg-neutral-500/5 text-neutral-500 hover:text-foreground hover:bg-neutral-500/10 transition-colors border border-transparent hover:border-border mt-1 md:mt-0 flex-shrink-0"
+              className="p-2.5 rounded-full bg-neutral-500/5 text-neutral-500 hover:text-foreground hover:bg-neutral-500/10 transition-colors border border-transparent hover:border-border mt-1 md:mt-0 flex-shrink-0 cursor-pointer"
               aria-label="Close"
             >
               <X className="size-4 md:size-5" />
@@ -779,8 +805,14 @@ function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
 
           {/* Scrollable content */}
           <div 
-            className="overflow-y-auto custom-popup-scrollbar px-6 py-8 md:px-10 space-y-10" 
-            style={{ minHeight: 0 }}
+            ref={scrollRef}
+            data-lenis-prevent
+            tabIndex={0}
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain custom-popup-scrollbar px-6 py-8 md:px-10 space-y-10 focus:outline-none" 
+            style={{
+              WebkitOverflowScrolling: "touch",
+              touchAction: "pan-y"
+            }}
           >
             {/* Hero Two Column */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -854,13 +886,29 @@ function FeatureDetailPopup({ feature, onClose }: FeatureDetailPopupProps) {
           </div>
           
           {/* Footer */}
-          <div className="flex flex-col sm:flex-row items-center justify-between border-t border-border px-6 py-4 md:px-10 bg-card gap-4">
+          <div className="flex-shrink-0 flex flex-col sm:flex-row items-center justify-between border-t border-border px-6 py-4 md:px-10 bg-card gap-4">
              <div className="text-xs text-neutral-500 font-medium">
                Built for modern call-center operations.
              </div>
-             <button onClick={onClose} className="group flex items-center gap-2 text-sm font-bold text-[#315FE8] hover:text-[#3F6FF0] transition-colors">
-               Explore Solution <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-             </button>
+             <div className="flex items-center gap-3">
+               <button 
+                 onClick={onClose} 
+                 className="px-4 py-2 text-xs font-semibold text-neutral-500 hover:text-foreground rounded-lg transition-colors border border-border hover:bg-surface-alt cursor-pointer"
+               >
+                 Close
+               </button>
+               <Link 
+                 href={
+                   ["ai-bot", "ai-voice-agent", "voip-solutions", "secure-sip"].includes(feature.id)
+                     ? `/services/${feature.id}`
+                     : "/contact"
+                 }
+                 onClick={onClose}
+                 className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#315FE8] text-white text-xs font-bold hover:bg-[#254ec9] transition-colors shadow-sm"
+               >
+                 Explore Solution <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+               </Link>
+             </div>
           </div>
         </m.div>
       </div>

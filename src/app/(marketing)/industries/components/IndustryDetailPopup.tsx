@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { m } from "framer-motion";
 import { X, CheckCircle2 } from "lucide-react";
 import type { IndustryCard } from "@/data/industries-page";
@@ -80,6 +81,16 @@ const getIndustryDetails = (title: string) => {
 };
 
 export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   if (!industry) return null;
   const details = getIndustryDetails(industry.title);
   const Icon = industry.icon;
@@ -87,6 +98,12 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
   return (
     <>
       <style>{`
+        .industry-popup-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(150, 150, 150, 0.3) transparent;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-y;
+        }
         .industry-popup-scrollbar::-webkit-scrollbar {
           width: 6px;
         }
@@ -94,14 +111,22 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
           background: transparent;
         }
         .industry-popup-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(150, 150, 150, 0.2);
+          background-color: rgba(150, 150, 150, 0.3);
           border-radius: 10px;
         }
         .industry-popup-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(150, 150, 150, 0.4);
+          background-color: rgba(150, 150, 150, 0.5);
         }
       `}</style>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-8 overscroll-contain">
+      <div 
+        data-lenis-prevent
+        className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 lg:p-8 overscroll-contain"
+        onWheel={(e) => {
+          if (scrollRef.current && !scrollRef.current.contains(e.target as Node)) {
+            scrollRef.current.scrollTop += e.deltaY;
+          }
+        }}
+      >
         <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -112,15 +137,15 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
         />
         
         <m.div
+          data-lenis-prevent
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative z-20 w-full sm:max-w-4xl lg:max-w-[800px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh] overscroll-contain"
-          style={{ display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr) auto' }}
+          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:max-w-[800px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh] overscroll-contain"
         >
           {/* Header */}
-          <div className="flex items-start justify-between border-b border-border px-6 py-5 md:px-8 md:py-6 bg-card relative">
+          <div className="flex-shrink-0 flex items-start justify-between border-b border-border px-6 py-5 md:px-8 md:py-6 bg-card relative">
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-400/10 border border-accent-400/20">
                 <Icon className="h-6 w-6 text-accent-400" />
@@ -134,7 +159,7 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
             </div>
             <button
               onClick={onClose}
-              className="rounded-full p-2 text-neutral-400 hover:bg-neutral-500/10 hover:text-foreground transition-colors mt-1"
+              className="rounded-full p-2 text-neutral-400 hover:bg-neutral-500/10 hover:text-foreground transition-colors mt-1 cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>
@@ -142,8 +167,14 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
 
           {/* Scrollable Content */}
           <div 
-            className="overflow-y-auto overscroll-contain industry-popup-scrollbar px-6 py-8 md:px-8 space-y-10" 
-            style={{ minHeight: 0 }}
+            ref={scrollRef}
+            data-lenis-prevent
+            tabIndex={0}
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain industry-popup-scrollbar px-6 py-8 md:px-8 space-y-10 focus:outline-none" 
+            style={{
+              WebkitOverflowScrolling: "touch",
+              touchAction: "pan-y"
+            }}
           >
             {/* Overview */}
             <div>
@@ -181,7 +212,7 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-end gap-3 border-t border-border px-6 py-4 md:px-8 bg-card">
+          <div className="flex-shrink-0 flex items-center justify-end gap-3 border-t border-border px-6 py-4 md:px-8 bg-card">
             <Button onClick={onClose} variant="outline" className="text-sm">
               Close
             </Button>

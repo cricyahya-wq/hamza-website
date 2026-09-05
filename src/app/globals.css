@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
@@ -166,8 +168,10 @@
     scroll-behavior: auto !important;
   }
 
-  .lenis.lenis-smooth [data-lenis-prevent] {
+  .lenis.lenis-smooth [data-lenis-prevent],
+  [data-lenis-prevent] {
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .lenis.lenis-stopped {
