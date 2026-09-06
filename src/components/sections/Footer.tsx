@@ -101,7 +101,14 @@ export function Footer() {
                 alt="MoosePBX logo"
                 width={56}
                 height={56}
-                className="h-12 w-auto shrink-0 mix-blend-multiply dark:mix-blend-screen dark:grayscale dark:invert dark:brightness-200"
+                className="h-12 w-auto shrink-0 block dark:hidden"
+              />
+              <Image
+                src="/images/custom-logo-white.png"
+                alt="MoosePBX logo"
+                width={56}
+                height={56}
+                className="h-12 w-auto shrink-0 hidden dark:block"
               />
               <span className="font-display text-2xl font-bold tracking-tight text-foreground">
                 MoosePBX

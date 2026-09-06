@@ -169,7 +169,15 @@ export function Navbar() {
               alt="MoosePBX logo"
               width={48}
               height={48}
-              className="h-10 w-auto sm:h-12 shrink-0 transition-transform duration-200 hover:scale-105 mix-blend-multiply dark:mix-blend-screen dark:grayscale dark:invert dark:brightness-200"
+              className="h-10 w-auto sm:h-12 shrink-0 transition-transform duration-200 hover:scale-105 block dark:hidden"
+              priority
+            />
+            <Image
+              src="/images/custom-logo-white.png"
+              alt="MoosePBX logo"
+              width={48}
+              height={48}
+              className="h-10 w-auto sm:h-12 shrink-0 transition-transform duration-200 hover:scale-105 hidden dark:block"
               priority
             />
             <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground">
