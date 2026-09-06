@@ -39,7 +39,7 @@ export default function PricingPage() {
       {/* PRICING CARDS */}
       <Section className="bg-background pt-24 pb-12">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <FadeIn key={plan.name} delay={index * 0.1} className="h-full">
                 <PricingCard {...plan} className="h-full" />

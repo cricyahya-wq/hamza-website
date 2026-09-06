@@ -81,6 +81,8 @@ export interface PricingPlan {
   ctaLabel: string;
   ctaHref: string;
   popular?: boolean;
+  badge?: string;
+  badgeColor?: string;
 }
 
 export interface BlogSection {

@@ -11,6 +11,8 @@ interface PricingCardProps {
   ctaLabel: string;
   ctaHref: string;
   popular?: boolean;
+  badge?: string;
+  badgeColor?: string;
   className?: string;
 }
 
@@ -23,21 +25,32 @@ export function PricingCard({
   ctaLabel,
   ctaHref,
   popular = false,
+  badge,
+  badgeColor,
   className,
 }: PricingCardProps) {
+  const showBadge = Boolean(badge || popular);
+  const badgeText = badge || (popular ? "Most popular" : "");
+  const isSpecial = popular || Boolean(badge);
+
   return (
     <div className={cn("h-full group", className)}>
       <div
         className={cn(
           "relative flex h-full flex-col rounded-[24px] border p-8 transition-all duration-300",
-          popular
-            ? "border-[#315FE8] bg-card shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)] hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-1"
+          isSpecial
+            ? "border-[#315FE8] bg-card shadow-[0_24px_48px_-12px_rgba(49,95,232,0.08)] hover:shadow-[0_24px_48px_-12px_rgba(49,95,232,0.15)] hover:-translate-y-1"
             : "border-border bg-card shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-[#315FE8]/30 hover:bg-card"
         )}
       >
-        {popular && (
-          <span className="bg-[#A98B52] text-white absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold tracking-wide uppercase">
-            Most popular
+        {showBadge && (
+          <span
+            className={cn(
+              "text-white absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold tracking-wide uppercase shadow-sm",
+              badgeColor ? badgeColor : popular ? "bg-[#A98B52]" : "bg-[#315FE8]"
+            )}
+          >
+            {badgeText}
           </span>
         )}
 

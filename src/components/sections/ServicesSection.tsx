@@ -216,11 +216,11 @@ const services: ServiceCategory[] = [
       <CallCenterPhotoVisual
         src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80&auto=format&fit=crop"
         alt="Customer support specialist using AI Voice Agent assistant"
-        badgeText="AI Voice Agent • Sub-500ms Latency"
+        badgeText="AI Voice Agent • $45 / Agent / Mo"
         badgeDot="bg-[#315FE8]"
-        badgeRight="AI Active"
+        badgeRight="$45 / Mo"
         title="Conversational AI & Voice Agents"
-        subtitle="Automate 70% of routine calls with neural voice synthesis and smart human handoff."
+        subtitle="Automate 70% of routine calls with sub-500ms voice agents and live agent handoff for just $45/agent/mo."
       />
     )
   },
