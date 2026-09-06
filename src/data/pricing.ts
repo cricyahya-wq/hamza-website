@@ -56,7 +56,7 @@ export const aiBotPlans: PricingPlan[] = [
   {
     name: "AI Voice Agent",
     price: "$45",
-    period: "/agent /mo",
+    period: "/agent /month",
     description: "Autonomous conversational AI voice bot for handling inbound and outbound calls.",
     features: [
       "Full AI Voice Bot & Virtual Agent",

@@ -82,7 +82,7 @@ export function Hero() {
               <span className="text-accent-400 font-bold">✓</span> Auto & Predictive Dialers
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
-              <span className="text-accent-400 font-bold">✓</span> AI Voice Agent & Bot ($45/agent/mo)
+              <span className="text-accent-400 font-bold">✓</span> AI Voice Agent & Bot ($45/agent/month)
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
               <span className="text-accent-400 font-bold">✓</span> 99.99% Enterprise Uptime

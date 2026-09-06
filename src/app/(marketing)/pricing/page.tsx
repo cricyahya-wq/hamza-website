@@ -31,7 +31,7 @@ export default function PricingPage() {
               Simple pricing that scales with you.
             </h1>
             <p className="font-sans mx-auto max-w-3xl text-xl leading-relaxed text-neutral-500">
-              Transparent, separate pricing for Call Center & Predictive Dialers and Autonomous AI Voice Agents ($45/agent/mo).
+              Transparent, separate pricing for Call Center & Predictive Dialers and Autonomous AI Voice Agents ($45/agent/month).
             </p>
           </div>
         </div>

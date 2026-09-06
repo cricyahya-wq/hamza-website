@@ -65,7 +65,7 @@ export function PricingSection() {
               )}
             >
               <Bot className="size-4" />
-              AI Voice Agent & Bot ($45/mo)
+              AI Voice Agent & Bot ($45/month)
             </button>
           </div>
         </div>

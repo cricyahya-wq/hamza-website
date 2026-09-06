@@ -50,7 +50,7 @@ const featureCategories = [
     shortDesc: "Intelligent communication",
     description: "Automate communication workflows with intelligent bots and AI-powered voice interactions starting at $45/agent/month.",
     features: [
-      "AI Voice Agents ($45/mo)", "AI Bot Integration", "Custom AI Workflows", 
+      "AI Voice Agents ($45/agent/month)", "AI Bot Integration", "Custom AI Workflows", 
       "Automated Conversations", "Intelligent Call Handling"
     ]
   }
