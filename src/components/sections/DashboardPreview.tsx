@@ -70,9 +70,9 @@ export function DashboardPreview() {
 
       <Container>
         <SectionHeading
-          eyebrow="Interactive preview"
-          title="See your contact center, in real time"
-          description="One dashboard for queues, agents, and analytics — no spreadsheets, no guesswork."
+          eyebrow="Call center command center"
+          title="See your call center, in real time"
+          description="One unified dashboard for live queues, agent performance, and call analytics — no spreadsheets, no guesswork."
         />
 
         <FadeIn delay={0.3} className="mt-12 flex justify-center">

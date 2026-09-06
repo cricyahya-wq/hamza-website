@@ -14,9 +14,9 @@ export function Contact() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow="Contact"
-              title="Let's talk about your contact center"
-              description="Tell us about your team and we'll show you how MoosePBX fits in. No pressure, no sales script."
+              eyebrow="Get started"
+              title="Let's discuss your call center solution"
+              description="Tell us about your agent team, dialer requirements, and call volume. We'll show you how MoosePBX powers your operations."
             />
 
             <FadeIn delay={0.3} className="mt-10 space-y-4">

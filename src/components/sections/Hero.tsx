@@ -24,7 +24,7 @@ export function Hero() {
             className="mb-6"
           >
             <span className="font-semibold tracking-[0.15em] text-accent-400 text-sm uppercase">
-              The modern call center platform
+              Enterprise Call Center Solutions
             </span>
           </m.div>
 
@@ -34,8 +34,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-bold tracking-tight text-foreground text-5xl sm:text-6xl lg:text-[72px] leading-[1.05]"
           >
-            Power Every Call.<br />
-            Scale Operations.
+            All-In-One Call Center Solutions.<br />
+            Engineered to Scale.
           </m.h1>
 
           <m.p
@@ -44,7 +44,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-[540px] text-lg leading-relaxed text-neutral-500"
           >
-            Powerful dialer and telecom infrastructure built to help teams connect faster, manage conversations smarter, and scale with confidence.
+            Complete call center solutions built for modern teams. From high-speed predictive dialers and omnichannel PBX to real-time analytics and conversational AI voice agents.
           </m.p>
 
           <m.div
@@ -69,13 +69,13 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-neutral-500"
           >
             <span className="flex items-center gap-2 whitespace-nowrap">
-              <span className="text-accent-400 font-bold">✓</span> Enterprise-ready
+              <span className="text-accent-400 font-bold">✓</span> Inbound & Outbound Calling
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
-              <span className="text-accent-400 font-bold">✓</span> Fast deployment
+              <span className="text-accent-400 font-bold">✓</span> Auto & Predictive Dialers
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
-              <span className="text-accent-400 font-bold">✓</span> Secure infrastructure
+              <span className="text-accent-400 font-bold">✓</span> 99.99% Enterprise Uptime
             </span>
           </m.div>
         </div>

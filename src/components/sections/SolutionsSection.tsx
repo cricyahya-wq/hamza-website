@@ -12,13 +12,13 @@ export function SolutionsSection() {
       <Container>
         <div className="mx-auto max-w-4xl text-center mb-16 sm:mb-20">
           <span className="mb-4 inline-block text-sm font-semibold tracking-[0.15em] text-accent-400 uppercase">
-            POWERFUL SOLUTIONS
+            CALL CENTER SOLUTIONS
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-            Solutions That Move Every Conversation Forward.
+            End-to-End Call Center Solutions for Growing Teams.
           </h2>
           <p className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-3xl mx-auto">
-            From complete call centers and outbound dialing to secure SIP infrastructure and AI voice automation, MoosePBX brings the right technology together around your business.
+            Whether running high-velocity outbound sales floors, 24/7 customer support desks, or multi-queue operations, MoosePBX provides custom-tailored call center solutions that scale seamlessly.
           </p>
         </div>
 

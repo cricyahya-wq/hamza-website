@@ -13,10 +13,10 @@ export function IndustriesSection() {
             WHO WE SERVE
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-            Communication Built for Every Industry.
+            Call Center Solutions Built for Every Industry.
           </h2>
           <p className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-3xl mx-auto">
-            From healthcare and finance to retail and high-volume call centers, MoosePBX delivers the security, reliability, and custom workflows your sector requires.
+            From healthcare patient support and financial advisory lines to high-velocity sales floors and e-commerce care, MoosePBX powers specialized call center operations.
           </p>
         </div>
 

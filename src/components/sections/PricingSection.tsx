@@ -14,13 +14,13 @@ export function PricingSection() {
       <Container>
         <div className="mx-auto max-w-4xl text-center mb-16 sm:mb-20">
           <span className="mb-4 inline-block text-sm font-semibold tracking-[0.15em] text-accent-500 uppercase">
-            TRANSPARENT PRICING
+            CALL CENTER PRICING
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-            Simple Pricing That Scales With You.
+            Transparent Call Center Plans That Scale.
           </h2>
           <p className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-3xl mx-auto">
-            No hidden setup fees, no complicated tiers. Pay per seat and upgrade smoothly as your team and call volume grow.
+            No hidden setup fees or rigid tiers. Pay per agent seat with full dialer, routing, and PBX capabilities included.
           </p>
         </div>
 

@@ -381,7 +381,7 @@ export function ServicesSection() {
               className="mb-6"
             >
               <span className="font-semibold tracking-[0.15em] text-accent-500 text-sm uppercase">
-                OUR SOLUTIONS
+                CALL CENTER SOLUTIONS & SERVICES
               </span>
             </m.div>
 
@@ -391,7 +391,7 @@ export function ServicesSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-8"
             >
-              Complete Communication.<br className="hidden sm:block"/> Built Your Way.
+              Complete Call Center Solutions.<br className="hidden sm:block"/> Built for Peak Performance.
             </m.h2>
 
             <m.p 
@@ -400,7 +400,7 @@ export function ServicesSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl text-neutral-500 leading-relaxed max-w-3xl mx-auto"
             >
-              From complete call center platforms and secure SIP infrastructure to custom dialers, software, and AI voice agents — MoosePBX builds the technology behind modern communication.
+              From all-in-one call center platforms and high-speed predictive dialers to secure SIP infrastructure and conversational AI voice agents — MoosePBX builds the technology that powers modern call centers.
             </m.p>
           </div>
 

@@ -3,10 +3,10 @@ import type { SiteConfig } from "@/types";
 export const siteConfig: SiteConfig = {
   name: "MoosePBX",
   tagline:
-    "Advanced call center solutions designed to cut operational costs, maximize efficiency, and drive business growth.",
-  mission: "Provide the best VoIP solutions.",
+    "All-In-One Call Center Solutions & Modern Telephony",
+  mission: "Provide enterprise-grade call center solutions and VoIP infrastructure.",
   description:
-    "MoosePBX delivers advanced call center and VoIP solutions that cut operational costs, maximize efficiency, and drive business growth.",
+    "MoosePBX is an advanced call center solution company providing intelligent predictive dialers, cloud PBX, omnichannel routing, and AI voice agents for high-performance teams.",
   // Set NEXT_PUBLIC_SITE_URL in your production environment before deploying.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "info@moosepbx.com",

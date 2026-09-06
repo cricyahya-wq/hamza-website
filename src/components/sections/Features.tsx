@@ -287,13 +287,13 @@ export function Features() {
       <Container className="relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="mb-4 inline-block text-sm font-semibold tracking-[0.15em] uppercase text-accent-400">
-            POWERFUL BY DESIGN
+            CALL CENTER TECHNOLOGY
           </span>
           <h2 className="font-display mb-6 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Everything Your Call Center Needs to Perform.
           </h2>
           <p className="font-sans text-lg leading-relaxed text-neutral-500">
-            Powerful dialing, call management, real-time visibility, and AI automation — designed to help teams connect faster and operate smarter.
+            Intelligent predictive dialing, omnichannel routing, live supervisor monitoring, and AI voice automation — purpose-built to help call center teams connect faster and operate smarter.
           </p>
         </div>
 
