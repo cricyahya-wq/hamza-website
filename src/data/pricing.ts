@@ -17,10 +17,10 @@ export const pricingPlans: PricingPlan[] = [
     ctaHref: "/contact?plan=starter",
   },
   {
-    name: "AI Voice Agent",
+    name: "AI Voice Agent & AI Bot",
     price: "$45",
     period: "/agent /mo",
-    description: "Conversational AI voice agents and bots for automated calling.",
+    description: "Conversational AI voice agents and bots for automated call center operations.",
     features: [
       "AI Voice Bot & Virtual Agent",
       "$45 per agent seat / month",

@@ -21,11 +21,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6"
+            className="mb-6 flex flex-wrap items-center gap-3"
           >
             <span className="font-semibold tracking-[0.15em] text-accent-400 text-sm uppercase">
               Enterprise Call Center Solutions
             </span>
+            <a
+              href="#pricing"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#315FE8]/30 bg-[#315FE8]/10 px-3 py-1 text-xs font-semibold text-[#315FE8] transition hover:bg-[#315FE8]/20"
+            >
+              <span className="size-1.5 rounded-full bg-[#2BC48A] animate-pulse" />
+              AI Voice Agent & Bot • $45 / Agent / Month
+            </a>
           </m.div>
 
           <m.h1
@@ -73,6 +80,9 @@ export function Hero() {
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
               <span className="text-accent-400 font-bold">✓</span> Auto & Predictive Dialers
+            </span>
+            <span className="flex items-center gap-2 whitespace-nowrap">
+              <span className="text-accent-400 font-bold">✓</span> AI Voice Agent & Bot ($45/agent/mo)
             </span>
             <span className="flex items-center gap-2 whitespace-nowrap">
               <span className="text-accent-400 font-bold">✓</span> 99.99% Enterprise Uptime
