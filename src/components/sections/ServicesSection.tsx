@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { m, useInView, AnimatePresence } from "framer-motion";
 import { ArrowRight, Shield, X, Code2, Users, GitBranch, Phone, List, Mic, Activity, BarChart, Database, PhoneCall, CheckCircle2 } from "lucide-react";
@@ -9,162 +10,56 @@ import { cn } from "@/lib/utils";
 
 // --- Visualizations ---
 
-function VoIPVisual() {
+function CallCenterPhotoVisual({
+  src,
+  alt,
+  badgeText,
+  badgeDot = "bg-[#2BC48A]",
+  badgeRight,
+  title,
+  subtitle,
+}: {
+  src: string;
+  alt: string;
+  badgeText: string;
+  badgeDot?: string;
+  badgeRight?: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
-    <div className="w-full h-full min-h-[260px] lg:min-h-[300px] rounded-xl bg-card border border-border p-5 relative overflow-hidden flex items-center justify-center transition-all duration-300">
-      <div className="flex flex-col items-center gap-1.5 relative z-10 scale-95 sm:scale-100">
-         <m.div 
-           animate={{ top: ["5%", "95%"], opacity: [0, 1, 1, 0] }}
-           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-           className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#315FE8] shadow-[0_0_6px_#315FE8] z-20"
-         />
-         <div className="px-4 py-1.5 rounded bg-card border border-border text-[10px] text-neutral-500 font-medium uppercase tracking-widest relative z-10 transition-colors group-hover:border-[#315FE8]/30">Caller</div>
-         <div className="w-px h-3 bg-[#DCE2E7]" />
-         <div className="px-4 py-1.5 rounded bg-card border border-border text-[10px] text-neutral-500 font-medium uppercase tracking-widest relative z-10 transition-colors group-hover:border-[#315FE8]/30">PBX</div>
-         <div className="w-px h-3 bg-[#DCE2E7]" />
-         <div className="flex gap-2 relative z-10">
-           <div className="px-3 py-1.5 rounded bg-card border border-border text-[10px] text-neutral-500 font-medium uppercase tracking-widest transition-colors group-hover:border-[#315FE8]/30">Auto Dialer</div>
-           <div className="px-3 py-1.5 rounded bg-[#315FE8] border border-[#315FE8] text-[10px] text-[#FFFFFF] font-bold uppercase tracking-widest shadow-sm">Predictive Dialer</div>
-         </div>
-         <div className="w-px h-3 bg-[#DCE2E7]" />
-         <div className="px-4 py-1.5 rounded bg-card border border-border text-[10px] text-foreground font-bold uppercase tracking-widest relative z-10 transition-colors group-hover:border-[#315FE8]/30">ViciDialer</div>
-         <div className="w-px h-3 bg-[#DCE2E7]" />
-         <div className="px-4 py-1.5 rounded bg-card border border-border text-[10px] text-neutral-500 font-medium uppercase tracking-widest flex items-center gap-2 relative z-10 transition-colors group-hover:border-[#315FE8]/30">Agent <span className="size-1.5 bg-[#2BC48A] rounded-full" /></div>
-      </div>
-      
-      <div className="absolute right-5 top-5 bg-card p-2.5 rounded-lg border border-border flex flex-col gap-2 z-10 hidden sm:flex">
-         <div className="flex items-center gap-2 text-[9px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#2BC48A] rounded-full" /> Agents Online</div>
-         <div className="flex items-center gap-2 text-[9px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#315FE8] rounded-full" /> Calls Active</div>
-         <div className="flex items-center gap-2 text-[9px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#2BC48A] rounded-full" /> SIP Connected</div>
-      </div>
-    </div>
-  )
-}
+    <div className="group/visual relative w-full h-full min-h-[260px] lg:min-h-[310px] rounded-2xl overflow-hidden border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary-500/40">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover transition-transform duration-700 ease-out group-hover/visual:scale-105"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
 
-function AIVisual() {
-  const [phase, setPhase] = useState(0);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPhase(p => (p + 1) % 3);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="w-full h-full min-h-[260px] lg:min-h-[300px] rounded-xl bg-card border border-border p-5 relative overflow-hidden flex items-center justify-center transition-all duration-300">
-      <div className="flex flex-col items-center gap-3 relative z-10">
-         <div className="text-[11px] text-neutral-500 font-bold uppercase tracking-widest">Customer</div>
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         
-         <div className="px-5 py-3 rounded-xl bg-card border border-border flex flex-col items-center gap-3 transition-colors group-hover:border-[#315FE8]/30 shadow-sm">
-            <div className="text-[11px] text-foreground font-bold uppercase tracking-widest">AI Voice Agent</div>
-            <div className="flex items-center gap-1 h-4 opacity-80">
-              {[...Array(16)].map((_, i) => (
-                <m.div 
-                  key={i} 
-                  animate={{ 
-                    height: phase === 0 ? `${Math.max(30, Math.random() * 60 + 20)}%` : 
-                            phase === 1 ? `${Math.max(20, Math.sin(i) * 30 + 50)}%` : 
-                            `${Math.max(30, Math.random() * 80 + 20)}%`,
-                    opacity: phase === 1 ? 0.5 : 1
-                  }} 
-                  transition={{ duration: 0.5 }} 
-                  className="w-1 bg-[#315FE8] rounded-full" 
-                />
-              ))}
-            </div>
-         </div>
-
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         <div className="flex items-center gap-6">
-            <div className="text-[10px] text-neutral-500 font-medium uppercase tracking-widest">Understands</div>
-            <div className="text-[10px] text-accent-500 font-bold uppercase tracking-widest">Responds</div>
-         </div>
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+        <span className="inline-flex items-center gap-2 rounded-full bg-black/65 backdrop-blur-md px-3 py-1.5 text-[11px] font-semibold text-white border border-white/15 shadow-sm">
+          <span className={cn("size-2 rounded-full animate-pulse", badgeDot)} />
+          {badgeText}
+        </span>
+        {badgeRight && (
+          <span className="rounded-full bg-[#315FE8]/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white border border-white/20 shadow-sm">
+            {badgeRight}
+          </span>
+        )}
       </div>
-      
-      <div className="absolute right-5 bottom-5 flex flex-col gap-2 text-[10px] font-medium uppercase tracking-wider z-10 transition-colors">
-         <div className={cn("flex items-center gap-2 transition-colors", phase === 0 ? "text-foreground" : "text-neutral-500")}><span className={cn("size-1.5 rounded-full", phase === 0 ? "bg-[#2BC48A]" : "bg-[#DCE2E7]")} /> Listening...</div>
-         <div className={cn("flex items-center gap-2 transition-colors", phase === 1 ? "text-foreground" : "text-neutral-500")}><span className={cn("size-1.5 rounded-full", phase === 1 ? "bg-[#315FE8]" : "bg-[#DCE2E7]")} /> Understanding...</div>
-         <div className={cn("flex items-center gap-2 transition-colors", phase === 2 ? "text-foreground" : "text-neutral-500")}><span className={cn("size-1.5 rounded-full", phase === 2 ? "bg-[#315FE8]" : "bg-[#DCE2E7]")} /> Responding...</div>
+
+      <div className="absolute bottom-4 left-4 right-4 z-10">
+        <div className="rounded-xl bg-black/60 backdrop-blur-md border border-white/15 p-3.5 sm:p-4 text-white shadow-lg">
+          <div className="text-sm sm:text-base font-bold tracking-tight text-white mb-1">{title}</div>
+          <div className="text-xs text-neutral-300 font-medium leading-relaxed">{subtitle}</div>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-function SecureSIPVisual() {
-  return (
-    <div className="w-full h-full min-h-[260px] lg:min-h-[300px] rounded-xl bg-card border border-border p-5 relative overflow-hidden flex items-center justify-center transition-all duration-300">
-       <div className="flex flex-col items-center gap-2 relative z-10">
-         <m.div 
-           animate={{ top: ["10%", "90%"], opacity: [0, 1, 1, 0] }}
-           transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-           className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#2BC48A] shadow-[0_0_6px_#2BC48A] z-20"
-         />
-         <div className="text-[11px] text-accent-500 font-bold uppercase tracking-widest mb-1">SIP Traffic</div>
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         <div className="px-4 py-2 rounded bg-card border border-border text-[11px] text-neutral-500 font-medium uppercase tracking-widest relative z-10 transition-colors group-hover:border-[#315FE8]/30">Load Balancer</div>
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         <div className="px-4 py-2.5 rounded bg-[#315FE8] border border-[#315FE8] text-[11px] text-[#FFFFFF] font-bold tracking-widest flex items-center gap-2 relative z-10 shadow-sm">
-            Kamailio / OpenSIPS
-         </div>
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         <div className="text-[11px] text-[#2BC48A] font-medium flex items-center gap-1.5 uppercase tracking-widest"><Shield className="size-3.5" /> Secure Call Routing</div>
-         <div className="w-px h-5 bg-[#DCE2E7]" />
-         <div className="px-4 py-2 rounded bg-card border border-border text-[11px] text-neutral-500 font-medium uppercase tracking-widest relative z-10 transition-colors group-hover:border-[#315FE8]/30">PBX / SIP Servers</div>
-       </div>
-
-       <div className="absolute left-5 bottom-5 flex flex-col gap-2 z-10 hidden sm:flex">
-         <div className="flex items-center gap-2 text-[10px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#315FE8] rounded-full" /> SIP Secure</div>
-         <div className="flex items-center gap-2 text-[10px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#315FE8] rounded-full" /> Traffic Routed</div>
-         <div className="flex items-center gap-2 text-[10px] text-neutral-500 font-medium uppercase tracking-wider"><span className="size-1.5 bg-[#2BC48A] rounded-full" /> High Availability</div>
-       </div>
-    </div>
-  )
-}
-
-function DevelopmentVisual() {
-  return (
-    <div className="w-full h-full min-h-[260px] lg:min-h-[300px] rounded-xl bg-card border border-border p-5 lg:p-8 relative overflow-hidden transition-all duration-300 flex items-center justify-center">
-       <div className="w-full max-w-[340px] h-full max-h-[180px] border border-border rounded-xl bg-card overflow-hidden flex flex-col relative z-10 shadow-sm transition-colors group-hover:border-[#315FE8]/30 group-hover:shadow-md">
-         {/* Topbar */}
-         <div className="h-10 border-b border-border flex items-center px-4 bg-card">
-            <div className="text-[10px] font-bold text-foreground tracking-widest uppercase">MoosePBX Development</div>
-         </div>
-         {/* Sidebar & Content */}
-         <div className="flex flex-1">
-            <div className="w-1/3 border-r border-border p-3 flex flex-col gap-3 bg-surface-alt">
-              <div className="h-2 w-3/4 bg-[#DCE2E7] rounded-full" />
-              <div className="h-2 w-1/2 bg-[#DCE2E7] rounded-full" />
-              <div className="h-2 w-2/3 bg-[#DCE2E7] rounded-full" />
-            </div>
-            <div className="flex-1 p-5 flex flex-col justify-between">
-               <div>
-                  <div className="text-xs font-bold text-foreground mb-4 tracking-wide">Dialer Application</div>
-                  <div className="grid grid-cols-2 gap-2">
-                     <div className="bg-card border border-border px-2 py-1.5 rounded-md text-[9px] text-neutral-500 font-medium tracking-wider transition-colors group-hover:bg-neutral-500/10">Campaigns</div>
-                     <div className="bg-card border border-border px-2 py-1.5 rounded-md text-[9px] text-neutral-500 font-medium tracking-wider transition-colors group-hover:bg-neutral-500/10">Agents</div>
-                     <div className="bg-card border border-border px-2 py-1.5 rounded-md text-[9px] text-neutral-500 font-medium tracking-wider transition-colors group-hover:bg-neutral-500/10">Calls</div>
-                     <div className="bg-card border border-border px-2 py-1.5 rounded-md text-[9px] text-neutral-500 font-medium tracking-wider transition-colors group-hover:bg-neutral-500/10">Analytics</div>
-                  </div>
-               </div>
-               <div className="mt-4 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="size-1.5 bg-[#315FE8] rounded-full animate-pulse" />
-                    <span className="text-[9px] text-[#315FE8] font-bold uppercase tracking-widest">Dev Active</span>
-                  </div>
-                  <m.div 
-                    animate={{ width: ["40%", "80%", "40%"] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="h-1.5 bg-[#DCE2E7] rounded-full"
-                  />
-               </div>
-            </div>
-         </div>
-       </div>
-    </div>
-  )
-}
 
 
 // --- Data & Types ---
@@ -272,7 +167,17 @@ const services: ServiceCategory[] = [
         idealFor: "Developers, modern SaaS platforms, and businesses building custom voice or video applications."
       }
     ],
-    visual: <VoIPVisual />
+    visual: (
+      <CallCenterPhotoVisual
+        src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&q=80&auto=format&fit=crop"
+        alt="Professional call center agent managing calls at workstation"
+        badgeText="Call Center Floor • 24 Agents Online"
+        badgeDot="bg-[#2BC48A]"
+        badgeRight="Predictive Dialer"
+        title="Inbound & Outbound Calling Hub"
+        subtitle="Intelligent auto & predictive dialing, cloud PBX, and live call distribution."
+      />
+    )
   },
   {
     id: "ai-automation",
@@ -307,7 +212,17 @@ const services: ServiceCategory[] = [
         idealFor: "Enterprises with custom internal systems, healthcare organizations, and financial service firms."
       }
     ],
-    visual: <AIVisual />
+    visual: (
+      <CallCenterPhotoVisual
+        src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80&auto=format&fit=crop"
+        alt="Customer support specialist using AI Voice Agent assistant"
+        badgeText="AI Voice Agent • Sub-500ms Latency"
+        badgeDot="bg-[#315FE8]"
+        badgeRight="AI Active"
+        title="Conversational AI & Voice Agents"
+        subtitle="Automate 70% of routine calls with neural voice synthesis and smart human handoff."
+      />
+    )
   },
   {
     id: "secure-sip",
@@ -323,7 +238,17 @@ const services: ServiceCategory[] = [
       createGenericDetail("HAProxy"),
       createGenericDetail("Load Balancing")
     ],
-    visual: <SecureSIPVisual />
+    visual: (
+      <CallCenterPhotoVisual
+        src="/images/blog/call-center-costs.jpg"
+        alt="Global contact center performance analytics and live monitoring center"
+        badgeText="Kamailio & SIP Core • 99.99% Uptime"
+        badgeDot="bg-[#2BC48A]"
+        badgeRight="Carrier Grade"
+        title="High-Availability Telephony Infrastructure"
+        subtitle="Load-balanced SIP trunks, anti-fraud routing, and enterprise-scale call capacity."
+      />
+    )
   },
   {
     id: "development",
@@ -337,7 +262,17 @@ const services: ServiceCategory[] = [
       createGenericDetail("Software Development"),
       createGenericDetail("Web Development")
     ],
-    visual: <DevelopmentVisual />
+    visual: (
+      <CallCenterPhotoVisual
+        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&q=80&auto=format&fit=crop"
+        alt="Call center team floor operating at their desks with headsets"
+        badgeText="High-Velocity Sales Floor"
+        badgeDot="bg-[#315FE8]"
+        badgeRight="Custom Dialer"
+        title="Custom Dialer & Platform Engineering"
+        subtitle="Bespoke agent workflows, custom CRM integration, and campaign management."
+      />
+    )
   }
 ];
 
