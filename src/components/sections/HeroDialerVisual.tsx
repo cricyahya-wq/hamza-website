@@ -1,20 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import { m } from "framer-motion";
 import { Phone, Users, PhoneCall, Activity, Signal, CheckCircle2 } from "lucide-react";
 
-import Image from "next/image";
-
 export function HeroDialerVisual() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <div className="size-full flex items-center justify-center lg:justify-end">
       
@@ -146,15 +136,15 @@ export function HeroDialerVisual() {
               
               {/* Subtle Waveform */}
               <div className="mt-4 flex items-end justify-between gap-0.5 h-8 opacity-30 relative z-0">
-                {[...Array(36)].map((_, i) => (
+                {[25, 45, 15, 60, 35, 80, 50, 95, 70, 45, 85, 30, 65, 40, 90, 55, 30, 75, 40, 85, 60, 35, 95, 70, 45, 80, 35, 60, 25, 90, 50, 75, 40, 65, 30, 50].map((h, i) => (
                   <m.div 
                     key={i}
-                    animate={{ height: [`${Math.max(10, Math.random() * 40)}%`, `${Math.max(30, Math.random() * 100)}%`, `${Math.max(10, Math.random() * 40)}%`] }}
+                    animate={{ height: [`${h * 0.4}%`, `${h}%`, `${h * 0.4}%`] }}
                     transition={{ 
-                      duration: 2 + Math.random() * 1.5, 
+                      duration: 2 + (i % 5) * 0.4, 
                       repeat: Infinity, 
-                      ease: "linear",
-                      delay: Math.random() * -2
+                      ease: "easeInOut",
+                      delay: (i % 7) * 0.2
                     }}
                     className="flex-1 max-w-[4px] sm:max-w-[6px] bg-[#315FE8] rounded-t-sm"
                   />

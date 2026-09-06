@@ -1,16 +1,10 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-
-const HeroDialerVisual = dynamic(
-  () =>
-    import("@/components/sections/HeroDialerVisual").then((mod) => mod.HeroDialerVisual),
-  { ssr: false },
-);
+import { HeroDialerVisual } from "@/components/sections/HeroDialerVisual";
 
 export function Hero() {
   return (
