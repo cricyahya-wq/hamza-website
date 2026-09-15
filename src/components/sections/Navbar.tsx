@@ -101,17 +101,20 @@ export function Navbar() {
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.stop();
       }
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
@@ -218,12 +221,12 @@ export function Navbar() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-3 sm:gap-4 md:hidden">
             <ThemeToggle />
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              className="flex size-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-neutral-500/10"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-foreground transition-colors hover:bg-neutral-500/10 active:bg-neutral-500/20"
               onClick={() => setMobileOpen((v) => !v)}
             >
               {mobileOpen ? (
@@ -243,7 +246,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="bg-background overflow-hidden border-t border-border/50 md:hidden"
+            className="bg-background max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-border/50 md:hidden pb-safe"
           >
             <Container className="flex flex-col gap-2 py-6">
               {navigation.map((item) => {
@@ -254,8 +257,10 @@ export function Navbar() {
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={cn(
-                      "rounded-lg px-4 py-3 text-base font-medium hover:bg-neutral-500/10 hover:text-accent-400 transition-colors flex items-center justify-between",
-                      isActive ? "text-accent-400 bg-neutral-500/10 font-semibold" : "text-foreground"
+                      "rounded-xl px-4 py-3.5 text-base font-medium min-h-[44px] hover:bg-neutral-500/10 hover:text-accent-400 active:bg-neutral-500/15 transition-colors flex items-center justify-between",
+                      isActive
+                        ? "text-accent-400 bg-neutral-500/10 font-semibold"
+                        : "text-foreground"
                     )}
                   >
                     <span>{item.label}</span>
@@ -265,16 +270,22 @@ export function Navbar() {
                   </Link>
                 );
               })}
-              <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="mt-4 pt-4 border-t border-border/50 flex flex-col gap-3">
                 <Button
                   href="/contact"
                   variant="primary"
                   size="md"
                   onClick={() => setMobileOpen(false)}
-                  className="w-full transition-transform hover:-translate-y-[1px] duration-200"
+                  className="w-full min-h-[48px] justify-center transition-transform hover:-translate-y-[1px] duration-200"
                 >
                   Get a demo
                 </Button>
+                <a
+                  href="mailto:info@moosepbx.com"
+                  className="text-xs text-center text-neutral-400 hover:text-accent-400 py-2 transition-colors"
+                >
+                  Need direct support? info@moosepbx.com
+                </a>
               </div>
             </Container>
           </m.div>

@@ -81,7 +81,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "bg-surface-alt relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-24",
+        "bg-surface-alt relative overflow-hidden pt-28 pb-14 sm:pt-36 sm:pb-20",
         className,
       )}
     >
@@ -105,7 +105,7 @@ export function PageHero({
         </FadeIn>
         <h1
           ref={headlineRef}
-          className="font-display mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+          className="font-display mt-6 text-3xl font-bold tracking-tight text-foreground sm:text-5xl leading-tight"
         >
           {title}
         </h1>

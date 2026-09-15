@@ -8,16 +8,16 @@ import { HeroDialerVisual } from "@/components/sections/HeroDialerVisual";
 
 export function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 bg-background min-h-[90vh] flex items-center border-b border-border scroll-mt-24">
-      <Container className="relative z-10 grid items-center gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-w-[1400px]">
+    <section id="hero" className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 bg-background min-h-[90dvh] flex items-center border-b border-border scroll-mt-24">
+      <Container className="relative z-10 grid items-center gap-10 lg:gap-16 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-w-[1400px]">
         <div className="min-w-0 flex flex-col items-start lg:pr-8">
           <m.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 flex flex-wrap items-center gap-3"
+            className="mb-6 flex flex-wrap items-center gap-2.5 sm:gap-3"
           >
-            <span className="font-semibold tracking-[0.15em] text-accent-400 text-sm uppercase">
+            <span className="font-semibold tracking-[0.15em] text-accent-400 text-xs sm:text-sm uppercase">
               Enterprise Call Center Solutions
             </span>
             <a
@@ -33,9 +33,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold tracking-tight text-foreground text-5xl sm:text-6xl lg:text-[72px] leading-[1.05]"
+            className="font-display font-bold tracking-tight text-foreground text-3xl sm:text-5xl lg:text-[72px] leading-[1.1] sm:leading-[1.05]"
           >
-            All-In-One Call Center Solutions.<br />
+            All-In-One Call Center Solutions.<br className="hidden sm:inline" />{" "}
             Engineered to Scale.
           </m.h1>
 

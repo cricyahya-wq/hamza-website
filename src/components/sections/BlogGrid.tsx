@@ -85,7 +85,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
               placeholder="Search articles…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-card focus:border-accent-400 focus:ring-accent-400/20 w-full rounded-full border border-border py-2.5 pr-4 pl-11 text-sm text-foreground placeholder:text-neutral-500 focus:ring-2 focus:outline-none"
+              className="bg-card focus:border-accent-400 focus:ring-accent-400/20 w-full rounded-full border border-border py-2.5 pr-4 pl-11 text-base sm:text-sm text-foreground placeholder:text-neutral-500 focus:ring-2 focus:outline-none"
             />
             {search && (
               <button

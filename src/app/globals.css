@@ -158,6 +158,9 @@
 @layer base {
   html {
     scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
   }
 
   html.lenis, html.lenis body {
@@ -181,7 +184,30 @@
   body {
     background: var(--color-background);
     color: var(--color-foreground);
-    overflow-x: clip;
+    overflow-x: hidden;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Remove 300ms tap delay and optimize touch responsiveness */
+  a, button, input, textarea, select {
+    touch-action: manipulation;
+  }
+
+  /* Safe Area Inset utilities for iOS Notches & Android Navigation */
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pl-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+  .pr-safe {
+    padding-right: env(safe-area-inset-right, 0px);
   }
 
   ::selection {
@@ -235,9 +261,9 @@
     --color-accent-400: #315FE8;
   }
 
-  html, body, *:not(.no-transition) {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-duration: 350ms;
+  html, body {
+    transition-property: background-color, color;
+    transition-duration: 250ms;
     transition-timing-function: ease;
   }
 

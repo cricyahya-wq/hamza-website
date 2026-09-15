@@ -142,7 +142,7 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:max-w-[800px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh] overscroll-contain"
+          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:max-w-[800px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90dvh] lg:max-h-[85dvh] overscroll-contain"
         >
           {/* Header */}
           <div className="flex-shrink-0 flex items-start justify-between border-b border-border px-6 py-5 md:px-8 md:py-6 bg-card relative">
@@ -159,7 +159,8 @@ export function IndustryDetailPopup({ industry, onClose }: IndustryDetailPopupPr
             </div>
             <button
               onClick={onClose}
-              className="rounded-full p-2 text-neutral-400 hover:bg-neutral-500/10 hover:text-foreground transition-colors mt-1 cursor-pointer"
+              className="rounded-full p-2 text-neutral-400 hover:bg-neutral-500/10 hover:text-foreground transition-colors mt-1 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label="Close"
             >
               <X className="h-5 w-5" />
             </button>

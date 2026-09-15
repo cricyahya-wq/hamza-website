@@ -14,17 +14,20 @@ export function IndustriesGrid() {
   useEffect(() => {
     if (selectedIndustry) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.stop();
       }
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }

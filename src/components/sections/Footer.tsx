@@ -178,7 +178,7 @@ export function Footer() {
                     type="email"
                     required
                     placeholder="you@company.com"
-                    className="bg-surface-alt focus:border-accent-400 focus:ring-[#C8A96B]/20 w-full min-w-0 flex-1 rounded-full border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-neutral-400 focus:ring-2 focus:outline-none"
+                    className="bg-surface-alt focus:border-accent-400 focus:ring-[#C8A96B]/20 w-full min-w-0 flex-1 rounded-full border border-border px-4 py-2.5 text-base sm:text-sm text-foreground placeholder:text-neutral-400 focus:ring-2 focus:outline-none"
                   />
                   {/* Honeypot field — hidden from real users. */}
                   <div className="absolute -left-[9999px]" aria-hidden="true">

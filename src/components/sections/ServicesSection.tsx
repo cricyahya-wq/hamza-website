@@ -285,17 +285,20 @@ export function ServicesSection() {
   useEffect(() => {
     if (selectedFeature) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.stop();
       }
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
@@ -706,7 +709,7 @@ function FeatureDetailPopup({ feature, category, onClose }: FeatureDetailPopupPr
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:w-[960px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] lg:max-h-[85vh] overscroll-contain"
+          className="relative z-20 flex flex-col w-full sm:max-w-4xl lg:w-[960px] bg-card border border-border sm:rounded-2xl shadow-2xl overflow-hidden max-h-[90dvh] lg:max-h-[85dvh] overscroll-contain"
         >
           {/* Header */}
           <div className="flex-shrink-0 flex items-start justify-between border-b border-border px-6 py-5 md:px-10 md:py-8 bg-card relative">
@@ -731,7 +734,7 @@ function FeatureDetailPopup({ feature, category, onClose }: FeatureDetailPopupPr
             
             <button
               onClick={onClose}
-              className="p-2.5 rounded-full bg-neutral-500/5 text-neutral-500 hover:text-foreground hover:bg-neutral-500/10 transition-colors border border-transparent hover:border-border mt-1 md:mt-0 flex-shrink-0 cursor-pointer"
+              className="p-2.5 rounded-full bg-neutral-500/5 text-neutral-500 hover:text-foreground hover:bg-neutral-500/10 transition-colors border border-transparent hover:border-border mt-1 md:mt-0 flex-shrink-0 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Close"
             >
               <X className="size-4 md:size-5" />

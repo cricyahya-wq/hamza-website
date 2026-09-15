@@ -34,6 +34,7 @@ export function Modal({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     dialogRef.current?.focus();
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     if (typeof window !== "undefined" && window.__lenis) {
       window.__lenis.stop();
     }
@@ -46,6 +47,7 @@ export function Modal({
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       if (typeof window !== "undefined" && window.__lenis) {
         window.__lenis.start();
       }
@@ -80,7 +82,7 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className={cn(
-              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-foreground/5 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl outline-none sm:p-8 max-h-[90vh] overflow-y-auto overscroll-contain",
+              "relative w-full max-w-lg rounded-3xl border border-white/10 bg-card p-6 shadow-2xl shadow-black/40 outline-none sm:p-8 max-h-[85dvh] overflow-y-auto overscroll-contain",
               className,
             )}
           >
@@ -88,7 +90,7 @@ export function Modal({
               type="button"
               onClick={onClose}
               aria-label="Close dialog"
-              className="absolute top-5 right-5 flex size-8 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-surface-alt hover:text-primary-600"
+              className="absolute top-4 right-4 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-surface-alt hover:text-foreground"
             >
               <X className="size-5" />
             </button>

@@ -250,11 +250,11 @@ const CustomPlatformVisual = () => (
 const SignatureAnimation = () => {
   const nodes = ["Customer", "SIP", "Routing", "Dialer", "Agent", "Analytics"];
   return (
-    <div className="relative w-full h-[140px] sm:h-[180px] rounded-2xl bg-background border border-border flex flex-col justify-center px-4 sm:px-12 overflow-hidden shadow-xl mb-16">
+    <div className="relative w-full h-[140px] sm:h-[180px] rounded-2xl bg-background border border-border flex flex-col justify-center px-2 sm:px-12 overflow-hidden shadow-xl mb-16">
       <div className="absolute inset-0 bg-gradient-to-r from-card/0 via-[#315FE8]/5 to-card/0 pointer-events-none" />
       
       {/* The Line */}
-      <div className="absolute left-8 right-8 sm:left-16 sm:right-16 top-1/2 -translate-y-1/2 h-px bg-[#2A3038] z-0" />
+      <div className="absolute left-6 right-6 sm:left-16 sm:right-16 top-1/2 -translate-y-1/2 h-px bg-[#2A3038] z-0" />
       
       {/* The Signal */}
       <m.div
@@ -270,8 +270,8 @@ const SignatureAnimation = () => {
           // The easing is easeInOut, which makes it non-linear, but we can approximate the peak.
           const delay = (i / (nodes.length - 1)) * 6;
           return (
-            <div key={node} className="flex flex-col items-center gap-3">
-               <div className="w-3 h-3 rounded-full border-2 border-border bg-surface-alt relative transition-colors duration-300 flex items-center justify-center">
+            <div key={node} className="flex flex-col items-center gap-2 sm:gap-3">
+               <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 border-border bg-surface-alt relative transition-colors duration-300 flex items-center justify-center">
                   <m.div 
                      animate={{ opacity: [0, 1, 0] }}
                      transition={{ duration: 6, repeat: Infinity, delay: delay - 0.5, ease: "linear" }}
@@ -286,7 +286,7 @@ const SignatureAnimation = () => {
                <m.span 
                  animate={{ color: ["#A7ADB5", "#F5F5F2", "#A7ADB5"] }}
                  transition={{ duration: 6, repeat: Infinity, delay: delay - 0.5, ease: "linear" }}
-                 className="text-[9px] sm:text-[11px] font-bold uppercase tracking-wider"
+                 className="text-[8px] sm:text-[11px] font-bold uppercase tracking-wider"
                >
                  {node}
                </m.span>

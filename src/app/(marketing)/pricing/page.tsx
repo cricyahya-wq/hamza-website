@@ -21,13 +21,13 @@ export default function PricingPage() {
     <div className="bg-background">
       
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden pt-32 pb-20 border-b border-border">
+      <section className="relative overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20 border-b border-border">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
           <div className="mx-auto max-w-4xl">
-            <span className="mb-6 inline-block text-sm font-bold tracking-[0.15em] text-accent-500 uppercase">
+            <span className="mb-4 inline-block text-xs sm:text-sm font-bold tracking-[0.15em] text-accent-500 uppercase">
               CALL CENTER & AI PRICING
             </span>
-            <h1 className="font-display mb-8 text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.1]">
+            <h1 className="font-display mb-6 text-3xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-tight sm:leading-[1.1]">
               Simple pricing that scales with you.
             </h1>
             <p className="font-sans mx-auto max-w-3xl text-xl leading-relaxed text-neutral-500">

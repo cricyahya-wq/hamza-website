@@ -16,7 +16,22 @@ export function useLenis() {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis with smooth, continuous scrolling options
+    // On touch devices (iOS Safari, Android Chrome, mobile devices), hardware-accelerated
+    // native touch scrolling is 120Hz/60Hz smooth with native momentum and gesture physics.
+    // Intercepting touch events with JavaScript causes scroll lag, freeze risks, and interferes
+    // with iOS Safari address bar collapse and elastic bounce.
+    // Therefore, only initialize Lenis on non-touch devices with fine pointers (mouse wheel).
+    const isTouch =
+      typeof window !== "undefined" &&
+      (window.matchMedia("(pointer: coarse)").matches ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0);
+
+    if (isTouch) {
+      return;
+    }
+
+    // Initialize Lenis with smooth, continuous scrolling options for desktop mouse wheel
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -24,7 +39,8 @@ export function useLenis() {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
+      touchMultiplier: 0,
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
@@ -74,23 +90,33 @@ export function useLenis() {
 
   // Handle route and hash changes
   useEffect(() => {
-    if (!lenisRef.current) return;
-
     const timer = setTimeout(() => {
-      lenisRef.current?.resize();
-      
-      if (typeof window !== "undefined" && window.location.hash) {
-        const hash = window.location.hash;
-        const target = document.querySelector(hash);
-        if (target) {
-          lenisRef.current?.scrollTo(target as HTMLElement, { offset: -80 });
-          return;
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+
+        if (typeof window !== "undefined" && window.location.hash) {
+          const hash = window.location.hash;
+          const target = document.querySelector(hash);
+          if (target) {
+            lenisRef.current.scrollTo(target as HTMLElement, { offset: -80 });
+            return;
+          }
         }
-      }
-      
-      // If no hash, ensure top of page
-      if (typeof window !== "undefined" && !window.location.hash) {
-        lenisRef.current?.scrollTo(0, { immediate: true });
+
+        if (typeof window !== "undefined" && !window.location.hash) {
+          lenisRef.current.scrollTo(0, { immediate: true });
+        }
+      } else if (typeof window !== "undefined") {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            const top =
+              (target as HTMLElement).getBoundingClientRect().top +
+              window.scrollY -
+              80;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
       }
     }, 120);
 
